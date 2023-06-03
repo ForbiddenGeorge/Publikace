@@ -1,0 +1,21 @@
+VŠE CO SE MUSÍ UDĚLAT/ZMĚNIT/SMAZAT/ZATAJIT
+
+TopHeader (Nadpis) - hotovo
+
+PublicationCard
+    - zobrazení informací o dané publikaci v jedné kartě -  hotovo
+    - zobrazení příslušný počet publikací - nemůžeme udělat/ověřit, v databázi je pouze jedna publikace
+
+zprovoznit mutace-pracuji
+
+Button pro přepočet podílů u publikace - nemáme
+
+Dropdown select pro výběr typu publikace - nemáme
+
+Vytvoření oken pro editační buttony (uvnitř jedné stránky, bylo by to husté jak cyp) - pracuji
+    - okno/karta na nové úrovni, kde by se vybral uživatel a přidal k publikaci - pracuji
+    - okno/karta na nové úrovni, kde by byl scroller pro výběr procent podílu na publikaci nemáme
+        (nápad: pro všechny autory, dal by se jeden zamknout, aby to šlo lehce)
+    - okno/karta na nové úrovni, kde by se měnilo pořadí autorů(nápad: šipky) - nemáme
+
+   ?? button pro přiřazení publikace k předmětu v akreditaci - nemáme
