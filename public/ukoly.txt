@@ -1,20 +1,24 @@
 VŠE CO SE MUSÍ UDĚLAT/ZMĚNIT/SMAZAT/ZATAJIT
 
+říct Štefkovy ať nám tam přidá novou publikaci, ideálně ať tam máme 3, abych mohl otestovat renderování publikací a jejich správnou identifikaci při přidávání autorů
+zepta se na dvojité fetche u queryn
+třeba přidat podmínky abych nešlo přidat dvakrát toho samého autora, abych zbytečně nestahoval data pokaždé když zapnu editCard.
+
 TopHeader (Nadpis) - hotovo
 
 PublicationCard
     - zobrazení informací o dané publikaci v jedné kartě -  hotovo
     - zobrazení příslušný počet publikací - nemůžeme udělat/ověřit, v databázi je pouze jedna publikace
 
-zprovoznit mutace-pracuji
+zprovoznit mutace- první funguje
 
 Button pro přepočet podílů u publikace - nemáme
 
 Dropdown select pro výběr typu publikace - nemáme
 
 Vytvoření oken pro editační buttony (uvnitř jedné stránky, bylo by to husté jak cyp) - pracuji
-    - okno/karta na nové úrovni, kde by se vybral uživatel a přidal k publikaci - pracuji
-    - okno/karta na nové úrovni, kde by byl scroller pro výběr procent podílu na publikaci nemáme
+    - okno/karta na nové úrovni, kde by se vybral uživatel a přidal k publikaci - hotovo
+    - okno/karta na nové úrovni, kde by byl scroller pro výběr procent podílu na publikaci - nemáme
         (nápad: pro všechny autory, dal by se jeden zamknout, aby to šlo lehce)
     - okno/karta na nové úrovni, kde by se měnilo pořadí autorů(nápad: šipky) - nemáme
 

@@ -1,12 +1,9 @@
 import { AddAuthorButton } from 'actions/AddAuthorButton';
-//dneska jen zprovoznit query, takže select zobrazuje usery ze serveru
 import React, { useEffect, useState } from 'react';
 import { UserPageQuery } from 'querries/UserPageQuery';
-import { event } from 'jquery';
+//import { event } from 'jquery';
 
-
-
-function EditCardNavBarAddAuthorSelect() {
+function EditCardNavBarAddAuthorSelect(publicationId) {
   const [users, setUsers] = useState([]);
   const [selectedUserId, setSelectedUserId] = useState(true);
 
@@ -17,6 +14,8 @@ function EditCardNavBarAddAuthorSelect() {
         const data = await response.json();
         const fetchedUsers = data.data.userPage;
         setUsers(fetchedUsers);
+        console.log('Users fetched');
+        console.log(data.data.userPage);
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
@@ -42,7 +41,7 @@ function EditCardNavBarAddAuthorSelect() {
           </option>
         ))}
       </select>
-      <AddAuthorButton selectedUserId={selectedUserId}/>
+      <AddAuthorButton selectedUserId={selectedUserId} selectedPublicationId={publicationId}/>
     </div>
   );
 }

@@ -6,21 +6,22 @@
 //Podíl se bude řešit v dalším okně
 
 //importy pro funkcionalitu
-import { useDispatch } from 'react-redux';
+
+/*import { useDispatch } from 'react-redux';
 import { loadData } from 'features/PublicationSlice';
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';*/
 import React from "react";
 //importy pro seznam
 import EditCardNavBarAddAuthorSelect from './EditCardNavBarAddAuthorSelect';
 
-function EditCardNavBarAddAuthor() {
+function EditCardNavBarAddAuthor(publicationId) {
 
     return (
         <div className="container-fluid">
             <div className="header mb-5">
                 <h3>Přídáni autora k publikaci</h3>
             </div>
-                <EditCardNavBarAddAuthorSelect/>
+                <EditCardNavBarAddAuthorSelect publicationId={publicationId}/>
                </div>
     )
 

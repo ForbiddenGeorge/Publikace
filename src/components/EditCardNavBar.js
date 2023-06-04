@@ -4,7 +4,7 @@ import EditCardNavBarAddAuthor from './EditCardNavBarAddAuthor';
 import EditCardNavBarChangeContribution from './EditCardNavBarChangeContribution';
 import EditCardNavBarOrderOfAuthors from './EditCardNavBarOrderOfAuthors';
 
-function EditCardNavBar(){
+function EditCardNavBar(publicationId){
 return(
     <div className="card text-center ">
         <div className="card-header bg-light text-dark">
@@ -26,7 +26,7 @@ return(
         <div className="card-body">
             <div className="tab-content">
                 <div className="tab-pane fade show active" id="AddAuthor">
-                    <EditCardNavBarAddAuthor/>
+                    <EditCardNavBarAddAuthor publicationId={publicationId}/>
                 </div>
                 <div className="tab-pane fade" id="OrderOfAuthors">
                     <EditCardNavBarOrderOfAuthors/>

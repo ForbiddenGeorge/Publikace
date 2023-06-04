@@ -1,22 +1,26 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-// A Redux slice for managing the state of the projects
-export const publicationslice = createSlice({
-    name: "publications",
-    initialState: [],
-    reducers: {
-        // A reducer that adds a new project to the projects state array
-      loadData: (state, action) => {
-        const publications = action.payload
-       /* state = [...state, ...publications]
-        return state*/
-        return [...state, ...publications];
-        } , 
+const publicationSlice = createSlice({
+  name: 'publications',
+  initialState: [],
+  reducers: {
+    loadData: (state, action) => {
+
+
+      const publications = action.payload;
+      publications.forEach((publication) => {
+        const existingPublication = state.find((p) => p.id === publication.id);
+        if (!existingPublication) {
+          state.push(publication);
+        }
+      });
+      console.log('I have been called');
+      //return [...state, ...publications];
+      
+    },
   },
-})
+});
 
-// Export the addProject action creator from the projectsSlice
-export const { loadData } = publicationslice.actions
+export const { loadData } = publicationSlice.actions;
 
-// Export the projectsSlice reducer
-export default publicationslice.reducer;
+export default publicationSlice.reducer;

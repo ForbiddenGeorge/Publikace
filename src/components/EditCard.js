@@ -4,7 +4,7 @@ import 'jquery/dist/jquery.min.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import EditCardNavBar from './EditCardNavBar';
 
-function EditCard({onClose}) {
+function EditCard({onClose, publicationId}) {
     const buttonRef = useRef(null);
 
   useEffect(() => {
@@ -23,6 +23,7 @@ function EditCard({onClose}) {
 
   const handleButtonClick = () => {
     onClose();
+    window.location.reload();
   };
 
   return (
@@ -31,7 +32,7 @@ function EditCard({onClose}) {
     <div className="modal fade" id="myModal" role="dialog">
       <div className="modal-dialog modal-lg modal-dialog-centered">
         <div className="modal-content">
-          <EditCardNavBar/>
+          <EditCardNavBar publicationId={publicationId}/>
           <div className="modal-footer">
             <button type="button" className="btn bg-success text-white" data-bs-dismiss="modal" onClick={handleButtonClick}>Zavřít</button>
           </div>

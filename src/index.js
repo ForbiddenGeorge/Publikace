@@ -4,17 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-import { store } from './redux/store';
+//import { store } from './redux/store';
+//import { configureStore } from '@reduxjs/toolkit';
+import PublicationSlice from 'features/PublicationSlice';
 import { configureStore } from '@reduxjs/toolkit';
-/*import publi
+import UserPageSlice from 'features/UserPageSlice';
 
 const store = configureStore({
 reducer: {
-  publications:
-}
-
-
-});*/
+  publications: PublicationSlice,
+  users: UserPageSlice,
+},
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

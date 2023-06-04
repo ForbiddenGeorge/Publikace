@@ -1,28 +1,40 @@
-//import { UserPageQuery } from 'querries/UserPageQuery';
-//import { loadData } from 'features/UserPageSlice';
-//špatně, tady má být mutation, ne query
-
-//id uživatel mám, teď ještě potřebuji získat id publikace, a následně budu moci provést mutaci
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
-
-
+import {useSelector} from "react-redux";
+//teď musím zprovoznit mutation 
 import { PublicationAddAuthorMutation } from 'querries/PublicationAddAuthorMutation';
 
-export const AddAuthorButton= ({selectedUserId}) => {
+export const AddAuthorButton= ({selectedUserId, selectedPublicationId}) => {
 
-  /*const dispatch = useDispatch()  
-  const [dataLoaded, setDataLoaded] = useState(false)
-  const [users, setUsers] = useState([]);*/
+  const publications = useSelector((state) => state.publications);
  
- const Logging = () => {
-    console.log('Selected User ID: ', selectedUserId);
-   // console.log('Id of the publication: ', publicationId);
- }
+ /*const Logging = () => {
+  publications.map((publication) => (
+    console.log('Selected Publication: ', publication.id),
+    console.log('Selected User ID: ', selectedUserId)
+  ))
+    
+ }*/
   
+ const handleAddAuthor = async () => {
+  try {
+    console.log('Selected Publication ID:', selectedPublicationId.publicationId.publicationId.publicationId);
+    console.log('Publications:', publications);
+    const selectedPublication = publications.find((publication) => publication.id === selectedPublicationId.publicationId.publicationId.publicationId);
+    console.log("selectedPublication: ",selectedPublication);
+    console.log("selectedPublicationId: ",selectedPublicationId);
+    if (selectedPublication) {
+      await PublicationAddAuthorMutation({ userId: selectedUserId, publicationId: selectedPublication.id });
+      console.log('Author added successfully!');
+    } else {
+      console.log('Selected publication not found!');
+    }
+  } catch (error) {
+    console.error('Error adding author:', error);
+  }
+};
+
   return (
    
-   <button className="btn bg-success text-white mt-4 align-left" onClick={Logging}>Přidat</button>
+   <button className="btn bg-success text-white mt-4 align-left" onClick={handleAddAuthor}>Přidat</button>
   
   )
 }

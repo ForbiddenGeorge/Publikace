@@ -1,6 +1,5 @@
 import { authorizedFetch } from '../querries/authorizedFetch'
 
-
 export const GroupsSelectQueryJSON = () => ({
     "query":
         `{
