@@ -1,19 +1,15 @@
 import {useSelector} from "react-redux";
 //teď musím zprovoznit mutation 
 import { PublicationAddAuthorMutation } from 'querries/PublicationAddAuthorMutation';
+import { useState } from "react";
 
 export const AddAuthorButton= ({selectedUserId, selectedPublicationId}) => {
 
   const publications = useSelector((state) => state.publications);
- 
- /*const Logging = () => {
-  publications.map((publication) => (
-    console.log('Selected Publication: ', publication.id),
-    console.log('Selected User ID: ', selectedUserId)
-  ))
-    
- }*/
-  
+ //zmapuji si autory abych dostal pořadí, potom ho přidám do mutace +1
+
+
+
  const handleAddAuthor = async () => {
   try {
     console.log('Selected Publication ID:', selectedPublicationId.publicationId.publicationId.publicationId);
@@ -22,7 +18,9 @@ export const AddAuthorButton= ({selectedUserId, selectedPublicationId}) => {
     console.log("selectedPublication: ",selectedPublication);
     console.log("selectedPublicationId: ",selectedPublicationId);
     if (selectedPublication) {
-      await PublicationAddAuthorMutation({ userId: selectedUserId, publicationId: selectedPublication.id });
+      const NumberOfAuthors = selectedPublication.authors.length + 1;
+      console.log('Author order: ', NumberOfAuthors);
+      await PublicationAddAuthorMutation({ userId: selectedUserId, publicationId: selectedPublication.id, AuthorNumber: NumberOfAuthors});
       console.log('Author added successfully!');
     } else {
       console.log('Selected publication not found!');
@@ -33,8 +31,11 @@ export const AddAuthorButton= ({selectedUserId, selectedPublicationId}) => {
 };
 
   return (
+  
+      <button className="btn bg-success text-white mt-4 align-left" 
+      onClick={handleAddAuthor}
+      >Přidat</button>
    
-   <button className="btn bg-success text-white mt-4 align-left" onClick={handleAddAuthor}>Přidat</button>
   
   )
 }

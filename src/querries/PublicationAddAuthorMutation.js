@@ -1,11 +1,13 @@
 import { authorizedFetch } from './authorizedFetch';
 
-const PublicationAddAuthorMutationJSON = (userId, publicationId) => ({
+const PublicationAddAuthorMutationJSON = (userId, publicationId, AuthorNumber) => ({
     query: `
     mutation {
       authorInsert(author:{
         userId: "${userId}",
         publicationId: "${publicationId}",
+        order: ${AuthorNumber},
+        share: 0,
       }
       ),{
         msg

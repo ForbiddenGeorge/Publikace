@@ -3,7 +3,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import EditCardNavBarAddAuthor from './EditCardNavBarAddAuthor';
 import EditCardNavBarChangeContribution from './EditCardNavBarChangeContribution';
 import EditCardNavBarOrderOfAuthors from './EditCardNavBarOrderOfAuthors';
-
+import EditCardNavBarEditInfo from './EditCardNavBarEditInfo';
 function EditCardNavBar(publicationId){
 return(
     <div className="card text-center ">
@@ -19,7 +19,7 @@ return(
                     <a href="#ChangeOfContribution" className="nav-link text-bg-light" data-bs-toggle="tab" >Změna podílu</a>
                 </li>
                 <li className="nav-item">
-                    <a href="#Acreditation" className="nav-link text-bg-light" data-bs-toggle="tab" >Akreditace</a>
+                    <a href="#Acreditation" className="nav-link text-bg-light" data-bs-toggle="tab" >Informace o publikaci</a>
                 </li>
             </ul>
         </div>
@@ -35,7 +35,7 @@ return(
                     <EditCardNavBarChangeContribution/>
                 </div>
                 <div className="tab-pane fade" id="Acreditation">
-                    <EditCardNavBarChangeContribution/>
+                   <EditCardNavBarEditInfo publicationId={publicationId}/>
                 </div>
 
             </div>
