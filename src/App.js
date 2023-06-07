@@ -8,7 +8,6 @@ import AddPublication from 'actions/AddPublicationButton';
 //Vytvořit button, modal na přidání publikací, autory tam přidávat nebudeme, maximálně že bychom nějak využili ty komponenty co už máme
 function App() {
   return (
-    // updatedfccs
     <div className="App">
       <TopHeader/>
       <AddPublication/>
