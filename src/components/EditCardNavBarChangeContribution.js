@@ -14,6 +14,7 @@ function EditCardNavBarChangeContribution({ publicationId }) {
       suma += celek.share;
     });
     AddSum(suma);
+    const sum = Number((suma).toFixed(1));
     console.log('Celkem: ', sum);
     if (sum === 1) {
       console.log('Updated authors:', authors);
@@ -23,6 +24,7 @@ function EditCardNavBarChangeContribution({ publicationId }) {
           userId: Contributor.id,
           userShare: Contributor.share,
           lastchange: Contributor.lastchange,
+          order: Contributor.order
         });
         console.log('Mutation finished');
       });
@@ -37,10 +39,10 @@ function EditCardNavBarChangeContribution({ publicationId }) {
     updatedAuthors[authorIndex] = { ...updatedAuthors[authorIndex], share };
     setAuthors(updatedAuthors);
   };
-
+/*
   useEffect(() => {
     handleSave();
-  }, [authors, handleSave]);
+  }, [authors, handleSave]);*/
 
   return (
     <div className="container">

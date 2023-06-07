@@ -35,13 +35,9 @@ function AddPublicationModal() {
             />
           </div>
           <div className="col-6">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Typ publikace"
-              value={publicationType}
-              onChange={(e) => setPublicationType(e.target.value)}
-            />
+            <select>
+              <option disabled>Help</option>
+            </select>
           </div>
         </div>
         <div className="row mb-3">

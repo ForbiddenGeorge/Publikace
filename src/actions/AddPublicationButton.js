@@ -4,7 +4,6 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import AddPublicationModal from 'components/AddPublicationModal';
 
 function AddPublication() {
-  // Tady bude modal pro přidání publikace
   return (
     <div className="container-fluid">
       <button
