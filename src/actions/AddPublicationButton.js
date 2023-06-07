@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'jquery/dist/jquery.min.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
-import AddPublicationModal from 'components/AddPublication';
+import AddPublicationModal from 'components/AddPublicationModal';
 
 function AddPublication() {
   // Tady bude modal pro přidání publikace
@@ -17,20 +17,14 @@ function AddPublication() {
       <div className="modal fade" id="AddPublicationModal" role="dialog">
         <div className="modal-dialog modal-lg modal-dialog-centered">
           <div className="modal-content">
-            <div className='modal-header'>
-            <h5>Přidání publikace</h5>
+            <div className='modal-header bg-success text-white'>
+            <h3>Přidání publikace</h3>
             </div>
-            <div className='media-body'>
+            <div className='modal-body'>
                 <AddPublicationModal/>
             </div>
             <div className="modal-footer">
-              <button
-                type="button"
-                className="btn bg-success text-white"
-                data-bs-dismiss="modal"
-              >
-                Zavřít
-              </button>
+              <button type="button" className="btn bg-success text-white" data-bs-dismiss="modal">Zavřít</button>
             </div>
           </div>
         </div>
