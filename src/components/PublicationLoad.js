@@ -7,7 +7,6 @@ import PublicationCard from './PublicationCard';
  const PublicationLoad = () => {
   const publications = useSelector((state) => state.publications);
   const dispatch = useDispatch();
-  //const [dataLoaded, setDataLoaded] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {

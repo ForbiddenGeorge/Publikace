@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { EditCardNavBarChangeContributionMutation } from 'querries/EditCardNavBarChangeContributionMutation';
 
 function EditCardNavBarChangeContribution({ publicationId }) {
   const publications = useSelector((state) => state.publications);
   const publication = publications.find((pub) => pub.id === publicationId.publicationId);
-  const [sum, AddSum] = useState(0);
+ // const [sum, AddSum] = useState(0);
   const [authors, setAuthors] = useState(publication ? [...publication.authors] : []);
 
   const handleSave = () => {
@@ -13,7 +13,7 @@ function EditCardNavBarChangeContribution({ publicationId }) {
     authors.forEach((celek) => {
       suma += celek.share;
     });
-    AddSum(suma);
+    //AddSum(suma);
     const sum = Number((suma).toFixed(1));
     console.log('Celkem: ', sum);
     if (sum === 1) {

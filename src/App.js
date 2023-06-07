@@ -2,6 +2,7 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import PublicationTypeLoad from 'components/PublicationTypeLoad';
 import  PublicationLoad  from 'components/PublicationLoad';
 import TopHeader from 'components/TopHeader';
 import AddPublication from 'actions/AddPublicationButton';
@@ -11,6 +12,7 @@ function App() {
     <div className="App">
       <TopHeader/>
       <AddPublication/>
+      <PublicationTypeLoad/>
       <PublicationLoad/>
     </div>
   );

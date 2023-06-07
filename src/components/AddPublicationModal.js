@@ -3,19 +3,19 @@ import { AddPublicationMutation } from 'querries/AddPublicationMutation';
 
 function AddPublicationModal() {
   const [title, setTitle] = useState('');
-  const [publicationType, setPublicationType] = useState('');
+  //const [publicationType, setPublicationType] = useState('');
   const [location, setLocation] = useState('');
   const [reference, setReference] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("I have been clicked", title);
-        console.log("I have been clicked", publicationType);
+       // console.log("I have been clicked", publicationType);
         console.log("I have been clicked", location);
         console.log("I have been clicked", reference);
     AddPublicationMutation({
         title: title,
-        publicationType: publicationType,
+      //  publicationType: publicationType,
         location: location,
         reference: reference
     });
