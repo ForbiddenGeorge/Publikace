@@ -32,7 +32,7 @@ return(
                     <EditCardNavBarOrderOfAuthors/>
                 </div>
                 <div className="tab-pane fade" id="ChangeOfContribution">
-                    <EditCardNavBarChangeContribution/>
+                    <EditCardNavBarChangeContribution publicationId={publicationId}/>
                 </div>
                 <div className="tab-pane fade" id="Acreditation">
                    <EditCardNavBarEditInfo publicationId={publicationId}/>

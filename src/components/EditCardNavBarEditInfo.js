@@ -16,7 +16,7 @@ function EditCardNavBarEditInfo({ publicationId }) {
     return (
         <div className="container">
             <div>
-                <label for="test" className="m-3">Jméno publikace</label>
+                <label htmlFor="test" className="m-3">Jméno publikace</label>
             <input /*onChange={TadyBudeFunkceCoBudeUkladatZmeny}*/ value={selectedPublication.name} id="test"></input>
             </div>
             
