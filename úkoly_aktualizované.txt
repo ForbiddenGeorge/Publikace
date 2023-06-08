@@ -1,0 +1,10 @@
+Předělat zbytek rerenderů automaticky, ne přes reloadPage(asi dost velká komplikace u Navbar, mezi jednotlivými kartami, přidám autora a pak hned chci upravit jeho podíl, zatím nejde)
+
+Zpřístupnit UserPage veřejně (strašné sraní-nejspíš, ale asi určitě)
+
+Dodělat AddPublication (je třeba dodat ten UserPage a změnit rerender na automatiku)
+
+Přidat alerty pro všechny podmínky (částečně místo logů pro uživatele)- contribution, addAuthor, addPublication
+
+Opravit možnost přidávání stejného autora k více publikacím( přes publicationId??) - možná nejde
+
