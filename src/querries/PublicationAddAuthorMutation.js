@@ -11,6 +11,18 @@ const PublicationAddAuthorMutationJSON = (userId, publicationId, AuthorNumber) =
       }) {
         msg
         id
+        author {
+          id
+          order
+          share 
+          lastchange
+          user{
+            id
+            name
+            surname
+            email
+          }
+        }
       }
     }
   `

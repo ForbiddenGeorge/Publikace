@@ -23,7 +23,7 @@ function EditCard({onClose, publicationId}) {
 
   const handleButtonClick = () => {
     onClose();
-    window.location.reload();
+    //window.location.reload();
   };
 
   return (

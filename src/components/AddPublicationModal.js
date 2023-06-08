@@ -12,12 +12,10 @@ function AddPublicationModal() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("I have been clicked", title);
+   /* console.log("I have been clicked", title);
         console.log("I have been clicked", publicationType);
         console.log("I have been clicked", location);
-        console.log("I have been clicked", reference);
-
-        //mutace
+        console.log("I have been clicked", reference);*/
     AddPublicationMutation({
         title: title,
         publicationType: publicationType,

@@ -20,10 +20,7 @@ import PublicationCard from './PublicationCard';
           console.log('Data fetched');
         }else{
           console.log('Error fetching something');
-         
         };
-        
-       
         //console.log(data.data.publicationPage);
        // setDataLoaded(true);
       } catch (error) {
