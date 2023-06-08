@@ -13,8 +13,17 @@ import PublicationCard from './PublicationCard';
       try {
         const response = await GroupsSelectQuery();
         const data = await response.json();
-        dispatch(loadData(data.data.publicationPage));
-        console.log('Data fetched');
+        console.log('Response:', data);
+        //Ty data jsou prázdná, warum??
+        if(data && data.data ){
+          dispatch(loadData(data.data.publicationPage));
+          console.log('Data fetched');
+        }else{
+          console.log('Error fetching something');
+         
+        };
+        
+       
         //console.log(data.data.publicationPage);
        // setDataLoaded(true);
       } catch (error) {

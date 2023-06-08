@@ -7,9 +7,8 @@ const PublicationAddAuthorMutationJSON = (userId, publicationId, AuthorNumber) =
         userId: "${userId}",
         publicationId: "${publicationId}",
         order: ${AuthorNumber},
-        share: 0.0,
-      }
-      ),{
+        share: 0.0
+      }) {
         msg
         id
       }
