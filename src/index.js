@@ -6,14 +6,16 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 //import { store } from './redux/store';
 //import { configureStore } from '@reduxjs/toolkit';
-import PublicationSlice from 'features/PublicationSlice';
+import publicationReducer from 'features/PublicationSlice';
 import { configureStore } from '@reduxjs/toolkit';
-import UserPageSlice from 'features/UserPageSlice';
+import userPageReducer from 'features/UserPageSlice';
+import publicationTypeReducer from 'features/PublicationTypeSlice';
 
 const store = configureStore({
 reducer: {
-  publications: PublicationSlice,
-  users: UserPageSlice,
+  publications: publicationReducer,
+  users: userPageReducer,
+  publicationTypes: publicationTypeReducer,
 },
 });
 

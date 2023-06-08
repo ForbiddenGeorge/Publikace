@@ -5,6 +5,8 @@ function PublicationCardInfo(publication){
         <p>Datum zveřejnění: {publication.publishedDate}</p>
         <p>Článek: {publication.publicationtype.name}</p>
         <p>Poslední změna: {publication.lastchange}</p>
+        <p>Místo: {publication.place}</p>
+        <p>Reference: {publication.reference}</p>
       </div>
     )
 }

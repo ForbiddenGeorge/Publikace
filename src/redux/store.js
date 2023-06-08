@@ -1,11 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import publicationReducer from '../features/PublicationSlice';
-//import msgReducer from '../features/MsgSlice'
-
+import publicationTypeReducer from '../features/PublicationTypeSlice';
 
 export const store = configureStore({
-    reducer: {
-        publications: publicationReducer,
-        //msg: msgReducer
-    }
-})
+  reducer: {
+    publications: publicationReducer,
+    publicationTypes: publicationTypeReducer,
+  }
+});

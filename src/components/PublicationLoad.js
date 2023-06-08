@@ -15,7 +15,7 @@ import PublicationCard from './PublicationCard';
         const data = await response.json();
         dispatch(loadData(data.data.publicationPage));
         console.log('Data fetched');
-        console.log(data.data.publicationPage);
+        //console.log(data.data.publicationPage);
        // setDataLoaded(true);
       } catch (error) {
         console.error('Error fetching group names:', error);
@@ -27,7 +27,7 @@ import PublicationCard from './PublicationCard';
 
   return (
     publications.map((pub) => (
-      <PublicationCard publication={pub}/>
+      <PublicationCard key={pub.id} publication={pub}/>
   )))
 }
 

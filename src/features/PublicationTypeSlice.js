@@ -5,16 +5,14 @@ const publicationTypeSlice = createSlice({
   initialState: [],
   reducers: {
     loadData: (state, action) => {
-
-
-      const publicationsTypes = action.payload;
-      publicationsTypes.forEach((publicationType) => {
-          state.push(publicationType);
+      const publicationTypes = action.payload;
+      publicationTypes.forEach((type) => {
+        const existingType = state.find((p) => p.id === type.id);
+        if (!existingType) {
+          state.push(type);
+        }
       });
         
-      //console.log('I have been called');
-      //return [...state, ...publications];
-      
     },
   },
 });

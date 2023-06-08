@@ -3,7 +3,7 @@ import 'jquery/dist/jquery.min.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import AddPublicationModal from 'components/AddPublicationModal';
 
-function AddPublication() {
+function AddPublication({types}) {
   return (
     <div className="container-fluid">
       <button

@@ -8,6 +8,8 @@ export const GroupsSelectQueryJSON = () => ({
             name
             lastchange
             publishedDate
+            place
+            reference
             publicationtype {
               id
               name
