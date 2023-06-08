@@ -3,11 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { UserPageQuery } from 'querries/UserPageQuery';
 //import { event } from 'jquery';
 
+//Tady ukazuji select, volám query a posílám příslušná data do další komponenty, která volá mutaci
 function EditCardNavBarAddAuthorSelect(publicationId) {
   const [users, setUsers] = useState([]);
   const [selectedUserId, setSelectedUserId] = useState(true);
 
   useEffect(() => {
+    //Volám si pole uživatelů pomocí query 
     const fetchData = async () => {
       try {
         const response = await UserPageQuery();
@@ -23,7 +25,7 @@ function EditCardNavBarAddAuthorSelect(publicationId) {
 
     fetchData();
   }, []);
-
+  //Při výběru autora ze selectu si uložím jeho ID
   const handleSelectChange = (event) => {
     const selectedUserId = event.target.value;
     setSelectedUserId(selectedUserId);
@@ -41,6 +43,7 @@ function EditCardNavBarAddAuthorSelect(publicationId) {
           </option>
         ))}
       </select>
+      {/*Volám button a dávám mu potřebná data */}
       <AddAuthorButton selectedUserId={selectedUserId} selectedPublicationId={publicationId}/>
     </div>
   );

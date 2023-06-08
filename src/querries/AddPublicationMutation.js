@@ -1,5 +1,6 @@
 import { authorizedFetch } from './authorizedFetch';
 
+//Query pro přidání nové publikace
 const AddPublicationMutationJSON = (title, publicationType, location, reference) => ({
     query: `
     mutation {

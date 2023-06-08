@@ -6,6 +6,7 @@ import AddPublicationModal from 'components/AddPublicationModal';
 function AddPublication({types}) {
   return (
     <div className="container-fluid">
+      {/*Neust8le viditelný button pro otevření modalu*/ }
       <button
         type="button"
         className="btn bg-success text-white mt-3 mx-2"
@@ -13,6 +14,7 @@ function AddPublication({types}) {
         data-bs-target="#AddPublicationModal">
         Přidat publikaci
       </button>
+      {/*Grafika samotného modálu*/}
       <div className="modal fade" id="AddPublicationModal" role="dialog">
         <div className="modal-dialog modal-lg modal-dialog-centered">
           <div className="modal-content">
@@ -20,6 +22,7 @@ function AddPublication({types}) {
             <h3>Přidání publikace</h3>
             </div>
             <div className='modal-body'>
+              {/*obsah modálu*/}
                 <AddPublicationModal/>
             </div>
             <div className="modal-footer">

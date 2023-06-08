@@ -1,3 +1,4 @@
+//authorized fetch
 const globalFetchParams = {
     method: 'POST',
     headers: {

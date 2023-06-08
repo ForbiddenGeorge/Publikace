@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+//Slicer pro publikace
 const publicationSlice = createSlice({
   name: 'publications',
   initialState: [],
   reducers: {
+    //načtení dat
     loadData: (state, action) => {
       const publications = action.payload;
       publications.forEach((publication) => {
@@ -13,6 +15,7 @@ const publicationSlice = createSlice({
         }
       });
     },
+    //Vložení nového autora který trigruje automaticky přerendrování
     InsertAuthor: (state, action) => {
       const { author, publicationId } = action.payload;
       const updatedState = state.map((publication) => {

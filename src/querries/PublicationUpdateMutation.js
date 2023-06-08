@@ -1,5 +1,6 @@
 import { authorizedFetch } from './authorizedFetch';
 
+//Mutace pro změnu informací o publikaci
 const PublicationUpdateMutationJSON = () => ({
     query: `
     mutation {

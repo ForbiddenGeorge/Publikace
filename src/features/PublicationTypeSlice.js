@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+//Slicer pro typy publikací
 const publicationTypeSlice = createSlice({
   name: 'publicationTypes',
   initialState: [],

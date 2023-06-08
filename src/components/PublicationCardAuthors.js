@@ -1,4 +1,4 @@
-//část karty publikace, seznam autorů
+//část karty publikace, seznam autorů a jejich informací
 function PublicationCardAuthors(author){
     return(
         <div>

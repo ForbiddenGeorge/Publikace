@@ -4,11 +4,13 @@ import { loadData } from 'features/PublicationSlice';
 import { useEffect/*, useState*/ } from 'react';
 import PublicationCard from './PublicationCard';
 
+//Tady dělám fetch publikací z databáze a pro každou publikaci volám komponentu PublicationCard
  const PublicationLoad = () => {
   const publications = useSelector((state) => state.publications);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    //samotné fetchování dat
     const fetchData = async () => {
       try {
         const response = await GroupsSelectQuery();
@@ -29,8 +31,9 @@ import PublicationCard from './PublicationCard';
     };
 
     fetchData();
-  }, [dispatch]);
-
+  }, [dispatch])
+  ;
+  //Pro každou z publikací udělám novou kartu
   return (
     publications.map((pub) => (
       <PublicationCard key={pub.id} publication={pub}/>

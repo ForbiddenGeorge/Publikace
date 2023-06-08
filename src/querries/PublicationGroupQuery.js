@@ -1,5 +1,6 @@
 import { authorizedFetch } from '../querries/authorizedFetch'
 
+//Query pro publikace
 export const GroupsSelectQueryJSON = () => ({
     "query":
         `{

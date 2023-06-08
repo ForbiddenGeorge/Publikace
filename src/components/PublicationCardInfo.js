@@ -1,4 +1,4 @@
-//část karty publikace, info o publikaci
+//část karty publikace, informace o publikaci
 function PublicationCardInfo(publication){
     return(
         <div className="panel">

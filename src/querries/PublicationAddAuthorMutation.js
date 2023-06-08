@@ -1,5 +1,6 @@
 import { authorizedFetch } from './authorizedFetch';
 
+//Mutace pro přidání nového autora k publikaci
 const PublicationAddAuthorMutationJSON = (userId, publicationId, AuthorNumber) => ({
   query: `
     mutation {

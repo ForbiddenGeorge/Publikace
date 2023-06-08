@@ -1,6 +1,6 @@
 import { authorizedFetch } from '../querries/authorizedFetch'
 
-
+//Query pro seznam uživatelů
 export const UserpageQueryJSON = () => ({
     "query":
         `{

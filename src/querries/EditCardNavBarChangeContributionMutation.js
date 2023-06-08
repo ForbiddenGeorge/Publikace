@@ -1,5 +1,6 @@
 import { authorizedFetch } from './authorizedFetch';
 
+//Mutace pro uložení změny podílu na publikaci pro všechny autory
 const EditCardNavBarChangeContributionMutationJSON = (userId, userShare, lastchange, order) => ({
   query: `
   mutation {

@@ -2,23 +2,25 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { EditCardNavBarChangeContributionMutation } from 'querries/EditCardNavBarChangeContributionMutation';
 
+
+//
 function EditCardNavBarChangeContribution({ publicationId }) {
   const publications = useSelector((state) => state.publications);
   const publication = publications.find((pub) => pub.id === publicationId.publicationId);
  // const [sum, AddSum] = useState(0);
   const [authors, setAuthors] = useState(publication ? [...publication.authors] : []);
 
+  //Funkce pro uložení změn
   const handleSave = () => {
     let suma = 0;
-    authors.forEach((celek) => {
+    authors.forEach((celek) => { //Sčítám celkový share všech autorů pro následnou kotrolu
       suma += celek.share;
     });
-    //AddSum(suma);
-    const sum = Number((suma).toFixed(1));
+    const sum = Number((suma).toFixed(1)); //zaokrouhluji
     console.log('Celkem: ', sum);
-    if (sum === 1) {
+    if (sum === 1) { //Pokud je podíl dohromady jedna, mohou se uložit změny
       console.log('Updated authors:', authors);
-      authors.forEach((Contributor) => {
+      authors.forEach((Contributor) => { // Pro kažého autora se zavolá mutaca pro změnu jeho sharu/podílu
         console.log('Mutation called', Contributor);
         EditCardNavBarChangeContributionMutation({
           userId: Contributor.id,
@@ -32,7 +34,7 @@ function EditCardNavBarChangeContribution({ publicationId }) {
       console.log('Total sum must be equal to one. Yours is:', sum);
     }
   };
-
+  //Při posuntí range se uloží jeho nová hodnota
   const Logging = (event, authorIndex) => {
     const share = parseFloat(event.target.value);
     const updatedAuthors = [...authors];
@@ -48,6 +50,7 @@ function EditCardNavBarChangeContribution({ publicationId }) {
     <div className="container">
       {publication && (
         <div>
+          {/*Pro každého autora vytvářím range */}
           {publication.authors.map((author, index) => (
             <div key={author.id} className="card mb-2 p-2">
               <div className="row">
@@ -83,6 +86,7 @@ function EditCardNavBarChangeContribution({ publicationId }) {
           ))}
         </div>
       )}
+      {/*Button kterým zavolám mutaci pro uložení změn */}
       <button type="button" className="btn bg-success text-white" onClick={handleSave}>
         Uložit změny
       </button>

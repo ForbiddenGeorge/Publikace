@@ -1,5 +1,6 @@
 import { authorizedFetch } from '../querries/authorizedFetch'
 
+//Query pro typy publikací
 export const PublicationTypeQueryJSON = () => ({
     "query":
         `{

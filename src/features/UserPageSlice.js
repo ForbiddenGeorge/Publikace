@@ -1,11 +1,10 @@
+//Budu dělat veřejně přístupnou, takže nebudu zatím komentovat
 import { createSlice } from "@reduxjs/toolkit";
 
-// A Redux slice for managing the state of the projects
 export const userslice = createSlice({
     name: "users",
     initialState: [],
     reducers: {
-        // A reducer that adds a new project to the projects state array
       loadData: (state, action) => {
         const users = action.payload
         state = [...state, ...users]

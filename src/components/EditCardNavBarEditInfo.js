@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-
+//OKOMENTUJE KÁVÍČ
 function EditCardNavBarEditInfo({ publicationId }) {
     const publications = useSelector((state) => state.publications);
     const selectedPublication = publications.find((publication) => publication.id === publicationId.publicationId);

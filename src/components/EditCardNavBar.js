@@ -4,9 +4,12 @@ import EditCardNavBarAddAuthor from './EditCardNavBarAddAuthor';
 import EditCardNavBarChangeContribution from './EditCardNavBarChangeContribution';
 import EditCardNavBarOrderOfAuthors from './EditCardNavBarOrderOfAuthors';
 import EditCardNavBarEditInfo from './EditCardNavBarEditInfo';
+
+//čistá grafika, obsah modalu EditCard
 function EditCardNavBar(publicationId){
 return(
     <div className="card text-center ">
+        {/*Vytvořím kartu s NavBarem, který podle ID spouští příslušná okna/komponenty*/}
         <div className="card-header bg-light text-dark">
             <ul className="nav nav-tabs card-header-tabs " id="myTab">
                 <li className="nav-item">
@@ -26,15 +29,19 @@ return(
         <div className="card-body">
             <div className="tab-content">
                 <div className="tab-pane fade show active" id="AddAuthor">
+                    {/*Přidání autora k publikaci*/}
                     <EditCardNavBarAddAuthor publicationId={publicationId}/>
                 </div>
                 <div className="tab-pane fade" id="OrderOfAuthors">
+                    {/*Úprava  pořadí autorů v publikaci*/}
                     <EditCardNavBarOrderOfAuthors/>
                 </div>
                 <div className="tab-pane fade" id="ChangeOfContribution">
+                    {/*Změna podílu autorů na publikaci */}
                     <EditCardNavBarChangeContribution publicationId={publicationId}/>
                 </div>
                 <div className="tab-pane fade" id="Acreditation">
+                    {/*Změna informací o publikaci*/}
                    <EditCardNavBarEditInfo publicationId={publicationId}/>
                 </div>
 

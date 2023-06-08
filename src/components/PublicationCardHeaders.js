@@ -1,4 +1,4 @@
-// část karty publikace, pevně dané nadpisy
+// část karty publikace, nadpisy sloupců
 function PublicationCardHeader(){
     return(
         <div className="p-2 pb-3 pt-3 mb-3 bg-success text-white">
