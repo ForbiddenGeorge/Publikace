@@ -1,5 +1,3 @@
-OKOMENTOVAT KÓD AŤ SE V TOM JDE VYZNAT
-
 Předělat zbytek rerenderů automaticky, ne přes reload Page
 (asi dost velká komplikace u Navbar, mezi jednotlivými kartami, přidám autora a pak hned chci upravit jeho podíl, zatím nejde)
 

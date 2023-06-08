@@ -1,26 +1,43 @@
+import { useState } from "react";
 import { useSelector } from "react-redux";
-//OKOMENTUJE KÁVÍČ
-function EditCardNavBarEditInfo({ publicationId }) {
-    const publications = useSelector((state) => state.publications);
-    const selectedPublication = publications.find((publication) => publication.id === publicationId.publicationId);
-    console.log("Ta moje publikace ", selectedPublication);
+//tady to je mutace kterou budeš volat na kliknutí buttonu, zatím není zprovozněná
+//import { PublicationUpdateMutation } from "querries/PublicationUpdateMutation"; 
 
-    //selectedPublication tam máš tu přesnou publikací s kterou budeš pracovat
-    //Doporučuji používat <input> ať ty informace o publikaci může uživatel dobře měnit
-    //mutaci myslím posílal štefek v mailu
-    //To že se data fetchují dvakrát(dvakrát ten samý log) neřeš
-    //dal jsem ti tam jen příklad jak to může fungovat, ale udělej to tak jak uznáš za vzhodné
-    //aby jsi mohl psát do input, musí mít každý input onChange(dal jsem to do komentáře) funkci,
-    //která bude průběžně ukládat ta data do proměnných, teď to dělal Kuba Křivohlávek, tak se ho můžeš kdyžtak zeptat
-    //Tohle jsou jen rady, můžeš to udělat jak chceš ty
+function EditCardNavBarEditInfo({ publicationId }) {
+    const publications = useSelector((state) => state.publications); //pole všech publikací, z tohoto pole pak vyberu naši správnou publikaci
+    const publicationTypes = useSelector((state) => state.publicationTypes) //Typy těch publikací
+    const [publicationType, setPublicationType] = useState('');//Tady máš uložený vybraný typ publikace
+    const selectedPublication = publications.find((publication) => publication.id === publicationId.publicationId); //tady je ta konkrétní publikace
+    //console.log("Ta moje publikace ", selectedPublication);
+    const [name, setName] = useState(''); // proměnná pro ukládání názvu, takhle budeš mít i pro další inputy
+
+    const handlePublicationUpdate = () =>{
+            //Tady pak budeš volat tu samotnou mutaci
+          //  PublicationUpdateMutation{//A v ní všechny potřebná data}
+          console.log("Vybraný typ publikacce", publicationType);
+          console.log("Změněný název: ", name);
+
+    }
+   
+    
     return (
         <div className="container">
             <div>
                 <label htmlFor="test" className="m-3">Jméno publikace</label>
-            <input /*onChange={TadyBudeFunkceCoBudeUkladatZmeny}*/ value={selectedPublication.name} id="test"></input>
+            <input onChange={(e) => setName(e.target.value)} placeholder={selectedPublication.name} id="test"></input>
             </div>
+            <select className="form-select" aria-label="Default select example" onChange={(e) => setPublicationType(e.target.value)}>
+        <option value={"Hej"}>
+            Seznam typů publikací
+        </option>
+        {publicationTypes.map((Type) => (
+          <option key={Type.id} value={Type.name}>{/*V tom value pak nejspíš bude id, ne name, ale teď aby jsi to viděl v koznoli */}
+            {Type.name}
+          </option>
+        ))}
+      </select>
             
-            <button type="button" className="btn bg-success text-white">Uložit</button>
+            <button type="button" className="btn bg-success text-white"onClick={handlePublicationUpdate}>Uložit</button>
         </div>
     );
 }
