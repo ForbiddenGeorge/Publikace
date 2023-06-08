@@ -27,7 +27,7 @@ const dispatch = useDispatch();
         )
       const data = await response.json();
       console.log(data.data.authorInsert.author);
-      dispatch(InsertAuthor({ author: data.data.authorInsert.author, publication: selectedPublication }));
+      dispatch(InsertAuthor({ author: data.data.authorInsert.author, publicationId: selectedPublication.id }));
       console.log('Author added successfully!');
     } else {
       console.log('Selected publication not found!');

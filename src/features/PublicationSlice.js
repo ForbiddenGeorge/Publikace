@@ -1,14 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-
-
 const publicationSlice = createSlice({
   name: 'publications',
   initialState: [],
   reducers: {
     loadData: (state, action) => {
-
-
       const publications = action.payload;
       publications.forEach((publication) => {
         const existingPublication = state.find((p) => p.id === publication.id);
@@ -16,23 +12,20 @@ const publicationSlice = createSlice({
           state.push(publication);
         }
       });
-      //console.log('I have been called');
-      //return [...state, ...publications];
-      
     },
-
     InsertAuthor: (state, action) => {
-      const newAuthor = action.payload.author;
-      const publikace = action.payload.publication
-      console.log("InsertAuthor action", newAuthor);
-      console.log("InsertAuthor publication", publikace);
-        publikace.authors.push(newAuthor);
-      
-        
-      }
-    
-
-    
+      const { author, publicationId } = action.payload;
+      const updatedState = state.map((publication) => {
+        if (publication.id === publicationId) {
+          return {
+            ...publication,
+            authors: [...publication.authors, author],
+          };
+        }
+        return publication;
+      });
+      return updatedState;
+    },
   },
 });
 
