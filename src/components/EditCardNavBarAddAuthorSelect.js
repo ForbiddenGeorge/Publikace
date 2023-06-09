@@ -1,21 +1,21 @@
 import { AddAuthorButton } from 'actions/AddAuthorButton';
-import React, { useEffect, useState } from 'react';
-import { UserPageQuery } from 'querries/UserPageQuery';
-//import { event } from 'jquery';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 //Tady ukazuji select, volám query a posílám příslušná data do další komponenty, která volá mutaci
 function EditCardNavBarAddAuthorSelect(publicationId) {
-  const [users, setUsers] = useState([]);
+ // const [users, setUsers] = useState([]);
   const [selectedUserId, setSelectedUserId] = useState(true);
-
-  useEffect(() => {
+  const users = useSelector((state) =>state.users);
+  console.log("Users array: ", users);
+ /* useEffect(() => { přesunut do PublicationLoad
     //Volám si pole uživatelů pomocí query 
     const fetchData = async () => {
       try {
         const response = await UserPageQuery();
         const data = await response.json();
-        const fetchedUsers = data.data.userPage;
-        setUsers(fetchedUsers);
+       // const fetchedUsers = data.data.userPage;
+        dispatch(loadUsersData(data.data.userPage));
         console.log('Users fetched');
         console.log(data.data.userPage);
       } catch (error) {
@@ -24,7 +24,7 @@ function EditCardNavBarAddAuthorSelect(publicationId) {
     };
 
     fetchData();
-  }, []);
+  }, [dispatch, users]);*/
   //Při výběru autora ze selectu si uložím jeho ID
   const handleSelectChange = (event) => {
     const selectedUserId = event.target.value;

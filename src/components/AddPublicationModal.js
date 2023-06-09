@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AddPublicationMutation } from 'querries/AddPublicationMutation';
 import { useSelector } from 'react-redux';
+import AddPublicationModalInsertUsers from './AddPublicationModalInsertUsers';
 
 function AddPublicationModal() {
   //konstanty pro ukládání hodnot z inputů
@@ -70,6 +71,12 @@ function AddPublicationModal() {
               onChange={(e) => setReference(e.target.value)}
             />
           </div>
+        </div>
+        <div className='row mb-3'>
+            <div className='col-12'>
+              <AddPublicationModalInsertUsers/>
+            </div>
+
         </div>
         {/**Button typu submit, volá mutaci */}
         <button type="submit" className="btn bg-success text-white">

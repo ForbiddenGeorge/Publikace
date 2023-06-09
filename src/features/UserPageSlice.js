@@ -5,16 +5,23 @@ export const userslice = createSlice({
     name: "users",
     initialState: [],
     reducers: {
-      loadData: (state, action) => {
+      loadUsersData: (state, action) => {
         const users = action.payload
+        users.forEach(user => {
+          const existingUser = state.find((p) => p.id ===user.id);
+          if(!existingUser){
+            state.push(user);
+          } 
+        });
+        /*
         state = [...state, ...users]
-        return state
+        return state*/
         } , 
   },
 })
 
 // Export the addProject action creator from the projectsSlice
-export const { loadData } = userslice.actions
+export const { loadUsersData } = userslice.actions
 
 // Export the projectsSlice reducer
 export default userslice.reducer
