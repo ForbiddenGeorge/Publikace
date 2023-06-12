@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AddPublicationMutation } from 'querries/AddPublicationMutation';
 import { useSelector } from 'react-redux';
 import AddPublicationModalInsertUsers from './AddPublicationModalInsertUsers';
+import { PublicationAddAuthorMutation } from 'querries/PublicationAddAuthorMutation';
 
 function AddPublicationModal() {
   //konstanty pro ukládání hodnot z inputů
@@ -9,19 +10,32 @@ function AddPublicationModal() {
   const [publicationType, setPublicationType] = useState('');
   const [location, setLocation] = useState('');
   const [reference, setReference] = useState('');
+  const [selectedAuthors, setSelectedAuthors] = useState([]);
 
    //beru si druhy všech publikací, které pak vužiji v selectu
   const publicationTypes = useSelector((state) => state.publicationTypes);
 
-  const handleSubmit = (e) => {//Na kliknutí buttonu Přidat, volám tady mutaci
+  const handleSubmit = async (e) => {//Na kliknutí buttonu Přidat, volám tady mutaci
     e.preventDefault();
-    AddPublicationMutation({ //samostatná mutace se všemi proměnými
+    const response = await AddPublicationMutation({ //samostatná mutace se všemi proměnými
         title: title,
         publicationType: publicationType,
         location: location,
         reference: reference
-        //měl bych tady mít ještě autory, nějak zaklikávácí select
     });
+    const data = await response.json();
+    const selectedPublicationId = data.data.publicationInsert.publication.id;
+    let AuthorOrder = 0;
+    selectedAuthors.forEach(authorId => {
+      PublicationAddAuthorMutation({
+          userId: authorId, 
+          publicationId: selectedPublicationId, 
+          AuthorNumber: AuthorOrder
+      });
+      AuthorOrder += 1;
+    });
+    //Prvně vytvořím publikací bez autorů, následně si získám id té nové publikace a přidám k ní ty autory
+    
   };
 
   return (
@@ -72,11 +86,14 @@ function AddPublicationModal() {
             />
           </div>
         </div>
+        {/*Select pro výběr autorů k publikaci */}
         <div className='row mb-3'>
             <div className='col-12'>
-              <AddPublicationModalInsertUsers/>
+            <AddPublicationModalInsertUsers
+            selectedAuthors={selectedAuthors}
+            setSelectedAuthors={setSelectedAuthors}
+              />
             </div>
-
         </div>
         {/**Button typu submit, volá mutaci */}
         <button type="submit" className="btn bg-success text-white">
