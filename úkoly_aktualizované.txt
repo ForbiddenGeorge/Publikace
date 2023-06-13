@@ -1,5 +1,3 @@
-PONDĚLÍ = Dodělat AddPublication (změnit rerender na automatiku) - multiple select dodělat a pak už jen mutaci
-
 PONDĚLÍ/ÚTERÝ = Předělat zbytek rerenderů automaticky, ne přes reload Page
 (asi dost velká komplikace u Navbar, mezi jednotlivými kartami, přidám autora a pak hned chci upravit jeho podíl, zatím nejde)
 

@@ -29,9 +29,20 @@ const publicationSlice = createSlice({
       });
       return updatedState;
     },
+    InsertPublication: (state, action) => {
+      const newPublicationId = action.payload.newPublicationId;
+      //const publications = action.payload.publications;
+    
+      const existingPublication = state.find((publication) => publication.id === newPublicationId.id);
+      if (!existingPublication) {
+        state.push(newPublicationId);
+      } else {
+        console.log("There was a problem pushing the new publication..");
+      }
+    },
   },
 });
 
-export const { loadData, InsertAuthor } = publicationSlice.actions;
+export const { loadData, InsertAuthor, InsertPublication } = publicationSlice.actions;
 
 export default publicationSlice.reducer;
