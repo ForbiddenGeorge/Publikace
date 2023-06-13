@@ -48,49 +48,46 @@ function EditCardNavBarChangeContribution({ publicationId }) {
 
   return (
     <div className="container">
-      {publication && (
-        <div>
-          {/*Pro každého autora vytvářím range */}
-          {publication.authors.map((author, index) => (
-            <div key={author.id} className="card mb-2 p-2">
-              <div className="row">
-                <div className="col-10">
-                  <h5>
-                    {author.user.name} {author.user.surname}
-                  </h5>
-                </div>
-                <div className="col-2">
-                  {authors.map((autor) => (
-                    <div key={autor.id}>
-                      <h5>{autor.share}</h5>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="row">
-                <label htmlFor="customRange3" className="form-label">
-                  Podíl na publikaci
-                </label>
-                <input
-                  type="range"
-                  className="form-range 90% m-2 border-success"
-                  min="0"
-                  max="1"
-                  step="0.1"
-                  id="customRange3"
-                  value={authors.share}
-                  onChange={(event) => Logging(event, index)}
-                />
+  {publication && (
+    <div>
+      {publication.authors.map((author, index) => (
+        <div key={author.id} className="card mb-2 p-2">
+          <div className="row">
+            <div className="col-10">
+              <h5>
+                {author.user.name} {author.user.surname}
+              </h5>
+            </div>
+            <div className="col-2">
+              <div key={author.id}>
+                <h5>{authors[index].share}</h5> {/* Access share value for the specific author */}
               </div>
             </div>
-          ))}
+          </div>
+          <div className="row">
+            <label htmlFor="customRange3" className="form-label">
+              Podíl na publikaci
+            </label>
+            <input
+              type="range"
+              className="form-range 90% m-2 border-success"
+              min="0"
+              max="1"
+              step="0.1"
+              id="customRange3"
+              value={authors[index].share}
+              onChange={(event) => Logging(event, index)}
+            />
+          </div>
         </div>
-      )}
-      {/*Button kterým zavolám mutaci pro uložení změn */}
-      <button type="button" className="btn bg-success text-white" onClick={handleSave}>
-        Uložit změny
-      </button>
+      ))}
     </div>
+  )}
+  {/*Button kterým zavolám mutaci pro uložení změn */}
+  <button type="button" className="btn bg-success text-white" onClick={handleSave}>
+    Uložit změny
+  </button>
+</div>
   );
 }
 
