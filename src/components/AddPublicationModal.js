@@ -3,7 +3,9 @@ import { AddPublicationMutation } from 'querries/AddPublicationMutation';
 import { useSelector } from 'react-redux';
 import AddPublicationModalInsertUsers from './AddPublicationModalInsertUsers';
 import { PublicationAddAuthorMutation } from 'querries/PublicationAddAuthorMutation';
-
+import { useDispatch } from 'react-redux';
+import { InsertAuthor } from 'features/PublicationSlice';
+import { InsertPublication } from 'features/PublicationSlice';
 function AddPublicationModal() {
   //konstanty pro ukládání hodnot z inputů
   const [title, setTitle] = useState('');
@@ -14,6 +16,7 @@ function AddPublicationModal() {
 
    //beru si druhy všech publikací, které pak vužiji v selectu
   const publicationTypes = useSelector((state) => state.publicationTypes);
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {//Na kliknutí buttonu Přidat, volám tady mutaci
     e.preventDefault();
@@ -24,18 +27,24 @@ function AddPublicationModal() {
         reference: reference
     });
     const data = await response.json();
-    const selectedPublicationId = data.data.publicationInsert.publication.id;
-    let AuthorOrder = 0;
-    selectedAuthors.forEach(authorId => {
-      PublicationAddAuthorMutation({
-          userId: authorId, 
-          publicationId: selectedPublicationId, 
-          AuthorNumber: AuthorOrder
-      });
-      AuthorOrder += 1;
-    });
+    const selectedPublication = data.data.publicationInsert.publication;
+    dispatch(InsertPublication({selectedPublication: selectedPublication}))
+    //Publikace se správně pošle, ale bez autorů, což je správně
+    console.log("data after the AddPublicationMutation: ", data.data);
     //Prvně vytvořím publikací bez autorů, následně si získám id té nové publikace a přidám k ní ty autory
-    
+    let AuthorOrder = 0;
+    for (const authorId of selectedAuthors) {
+      const authorResponse = await PublicationAddAuthorMutation({
+        userId: authorId,
+        publicationId: selectedPublication.id,
+        AuthorNumber: AuthorOrder,
+      });
+      const authorData = await authorResponse.json();
+      dispatch(InsertAuthor({ author: authorData.data.authorInsert.author, publicationId: selectedPublication.id }));
+      AuthorOrder += 1;
+    }
+
+    //Tady já bych potřeboval znova dotáhnout ten nový publication s těmi autory a to dispatchnout
   };
 
   return (

@@ -30,12 +30,12 @@ const publicationSlice = createSlice({
       return updatedState;
     },
     InsertPublication: (state, action) => {
-      const newPublicationId = action.payload.newPublicationId;
+      const newPublication = action.payload.selectedPublication;
       //const publications = action.payload.publications;
     
-      const existingPublication = state.find((publication) => publication.id === newPublicationId.id);
+      const existingPublication = state.find((publication) => publication.id === newPublication.id);
       if (!existingPublication) {
-        state.push(newPublicationId);
+        state.push(newPublication);
       } else {
         console.log("There was a problem pushing the new publication..");
       }

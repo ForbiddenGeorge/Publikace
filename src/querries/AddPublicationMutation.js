@@ -15,7 +15,24 @@ const AddPublicationMutationJSON = (title, publicationType, location, reference)
       {
       id
       msg
-      publication{id}}
+      publication{
+        id,
+         name,
+          place,
+          lastchange
+          publicationtype{
+            id
+            name
+          }
+          reference,
+          publishedDate
+          authors{
+          id,
+          user{
+            name
+          }
+        }
+        }}
     }
   `
 });
