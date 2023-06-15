@@ -16,6 +16,8 @@ const publicationSlice = createSlice({
       });
     },
     //Vložení nového autora který trigruje automaticky přerendrování
+    
+    //nedělat vector , dictionary lepší
     InsertAuthor: (state, action) => {
       const { author, publicationId } = action.payload;
       const updatedState = state.map((publication) => {

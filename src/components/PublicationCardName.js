@@ -1,5 +1,5 @@
 //část karty publikace, jméno samotné publikace
-function PublicationCardName(publication){
+function PublicationCardName({publication}){
     return(
               <div className="d-flex justify-content-center">
                 <h3>

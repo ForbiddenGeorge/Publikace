@@ -1,5 +1,5 @@
 //část karty publikace, seznam autorů a jejich informací
-function PublicationCardAuthors(author){
+function PublicationCardAuthors({author}){      {/*ŠTEFEK*/} {/*Nejsem si jistý jestli tohle upravoval nebo to už takhle bylo*/}
     return(
         <div>
             <h5>{author.user.name} {author.user.surname}</h5>

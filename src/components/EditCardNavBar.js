@@ -6,7 +6,7 @@ import EditCardNavBarOrderOfAuthors from './EditCardNavBarOrderOfAuthors';
 import EditCardNavBarEditInfo from './EditCardNavBarEditInfo';
 
 //čistá grafika, obsah modalu EditCard
-function EditCardNavBar(publicationId){
+function EditCardNavBar({publicationId}){   {/*ŠTEFEK*/}
 return(
     <div className="card text-center ">
         {/*Vytvořím kartu s NavBarem, který podle ID spouští příslušná okna/komponenty*/}
@@ -30,7 +30,7 @@ return(
             <div className="tab-content">
                 <div className="tab-pane fade show active" id="AddAuthor">
                     {/*Přidání autora k publikaci*/}
-                    <EditCardNavBarAddAuthor publicationId={publicationId}/>
+                    <EditCardNavBarAddAuthor publicationId={publicationId}/>        {/*ŠTEFEK*/}
                 </div>
                 <div className="tab-pane fade" id="OrderOfAuthors">
                     {/*Úprava  pořadí autorů v publikaci*/}

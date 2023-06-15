@@ -4,24 +4,9 @@ import { PublicationAddAuthorMutation } from 'querries/PublicationAddAuthorMutat
 import { useDispatch } from "react-redux";
 import {InsertAuthor} from 'features/PublicationSlice';
 
-export const AddAuthorButton= ({selectedUserId, selectedPublicationId}) => {
-
-  const publications = useSelector((state) => state.publications); //beru si array publikací
-const dispatch = useDispatch();
-
- const handleAddAuthor = async () => { //OnClick funkce, volá mutaci
-  try {
-    console.log('Selected Publication ID:', selectedPublicationId.publicationId.publicationId.publicationId);
-    console.log('Publications:', publications);
-    //Vyberu si publikaci ve které právě sem pomocí ID co si posílám z nadřazené komponenty
-    const selectedPublication = publications.find((publication) => publication.id === selectedPublicationId.publicationId.publicationId.publicationId);
-    console.log("selectedPublication: ",selectedPublication);
-    console.log("selectedPublicationId: ",selectedPublicationId);
-
-    if (selectedPublication) { //Pokud ji najdu
-      const NumberOfAuthors = selectedPublication.authors.length + 1; //Najdu npvé pořadí pro nového autora
-      console.log('Author order: ', NumberOfAuthors);
-      const response = await PublicationAddAuthorMutation( //volám samotnou mutaci s potřebnými proměnými
+export const PublicationAddAuthorAsyncAction = ({userId, publicationId, AuthorNumber}) => (dispatch, getState) => {   {/*ŠTEFEK*/}
+  const bodyFunction = async() => {
+    const response = await PublicationAddAuthorMutation( //volám samotnou mutaci s potřebnými proměnými
         { userId: selectedUserId, 
           publicationId: selectedPublication.id, 
           AuthorNumber: NumberOfAuthors}
@@ -29,14 +14,50 @@ const dispatch = useDispatch();
       const data = await response.json(); //získávám všechna data co mám
       console.log(data.data.authorInsert.author);
       //aktualizuji store, dochází tedy k přerendrování všech komponent kde se využívá pole publikací
-      dispatch(InsertAuthor({ author: data.data.authorInsert.author, publicationId: selectedPublication.id }));
-      console.log('Author added successfully!');
-    } else {
-      console.log('Selected publication not found!');
-    }
-  } catch (error) {
-    console.error('Error adding author:', error);
-  }
+      return dispatch(InsertAuthor({ author: data.data.authorInsert.author, publicationId: selectedPublication.id })); //lokální dispatch
+        }
+    return bodyFunction();
+}
+
+
+
+export const AddAuthorButton= ({selectedUserId, selectedPublicationId, AuthorNumber}) => {
+
+  const publications = useSelector((state) => state.publications); //beru si array publikací
+const dispatch = useDispatch();
+
+ const handleAddAuthor = () => { //OnClick funkce, volá mutaci ----
+  dispatch (PublicationAddAuthorAsyncAction({userId: selectedUserId, publicationId: selectedPublicationId, AuthorNumber}))
+
+
+  // try {
+  //   console.log('Selected Publication ID:', selectedPublicationId.publicationId.publicationId.publicationId);
+  //   console.log('Publications:', publications);
+  //   //Vyberu si publikaci ve které právě sem pomocí ID co si posílám z nadřazené komponenty
+  //   const selectedPublication = publications.find((publication) => publication.id === selectedPublicationId.publicationId.publicationId.publicationId);
+  //   console.log("selectedPublication: ",selectedPublication);
+  //   console.log("selectedPublicationId: ",selectedPublicationId);
+
+  //   if (selectedPublication) { //Pokud ji najdu
+  //     const NumberOfAuthors = selectedPublication.authors.length + 1; //Najdu npvé pořadí pro nového autora
+  //     console.log('Author order: ', NumberOfAuthors);
+  //     const response = await PublicationAddAuthorMutation( //volám samotnou mutaci s potřebnými proměnými
+  //       { userId: selectedUserId, 
+  //         publicationId: selectedPublication.id, 
+  //         AuthorNumber: NumberOfAuthors}
+  //       )
+  //     const data = await response.json(); //získávám všechna data co mám
+  //     console.log(data.data.authorInsert.author);
+  //     //aktualizuji store, dochází tedy k přerendrování všech komponent kde se využívá pole publikací
+  //     dispatch(InsertAuthor({ author: data.data.authorInsert.author, publicationId: selectedPublication.id }));
+  //     console.log('Author added successfully!');
+  //   } else {
+  //     console.log('Selected publication not found!');
+  //   }
+  // }
+  // catch (error) {
+  //   console.error('Error adding author:', error);
+  // }
 };
   //vracím čistý button
   return (

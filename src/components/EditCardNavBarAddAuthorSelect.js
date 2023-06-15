@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 //Tady ukazuji select, volám query a posílám příslušná data do další komponenty, která volá mutaci
-function EditCardNavBarAddAuthorSelect(publicationId) {
+function EditCardNavBarAddAuthorSelect({publicationId, onselect}) {
  // const [users, setUsers] = useState([]);
-  const [selectedUserId, setSelectedUserId] = useState(true);
-  const users = useSelector((state) =>state.users);
-  console.log("Users array: ", users);
+  // const [selectedUserId, setSelectedUserId] = useState(true);
+  // const users = useSelector((state) =>state.users);
+  // console.log("Users array: ", users);
  /* useEffect(() => { přesunut do PublicationLoad
     //Volám si pole uživatelů pomocí query 
     const fetchData = async () => {
@@ -28,7 +28,10 @@ function EditCardNavBarAddAuthorSelect(publicationId) {
   //Při výběru autora ze selectu si uložím jeho ID
   const handleSelectChange = (event) => {
     const selectedUserId = event.target.value;
-    setSelectedUserId(selectedUserId);
+    // setSelectedUserId(selectedUserId);
+    if (onselect){
+      onselect(selectedUserId)
+    }
   };
 
   return (
@@ -43,8 +46,8 @@ function EditCardNavBarAddAuthorSelect(publicationId) {
           </option>
         ))}
       </select>
-      {/*Volám button a dávám mu potřebná data */}
-      <AddAuthorButton selectedUserId={selectedUserId} selectedPublicationId={publicationId}/>
+      {/*Volám button a dávám mu potřebná data === dát pryč */}
+      {/* <AddAuthorButton selectedUserId={selectedUserId} selectedPublicationId={publicationId} AuthorNumber={users.length+1}/> */}    {/*ŠTEFEK*/}
     </div>
   );
 }

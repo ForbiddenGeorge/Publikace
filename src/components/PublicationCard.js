@@ -8,7 +8,7 @@ import PublicationCardAuthors from './PublicationCardAuthors';
 import PublicationCardInfo from './PublicationCardInfo';
 import EditCard from './EditCard';
 
-const PublicationCard = ({ publication }) => {
+const PublicationCard = ({ publication }) => { //správně komponenta
   const [showEditCard, setShowEditCard] = useState(false);
   //Tyto dvě funkci ukazují a schovávají EditCard modal
   const handleClick = () => {
@@ -22,25 +22,25 @@ const PublicationCard = ({ publication }) => {
     <div className="container mb-5 mt-5">
       <div className="card">
         {/*Nadpisy sloupečků*/}
-        <PublicationCardHeader />
+        <PublicationCardHeader /> 
         <div className="row" key={publication.id}>
           <div className="col-4">
             <div>
               {/*Jméno publikace*/}
-              {PublicationCardName(publication)}
+              <PublicationCardName publication={publication}/>
             </div>
           </div>
           <div className="col-4">
             {/*Výpis pro každého autora */}
             {publication.authors.map((author) => (
-              <div className="panel" key={author.id}>
-                {PublicationCardAuthors(author)}
+              <div className="panel" >
+                <PublicationCardAuthors author={author} key={author.id}/>
               </div>
             ))}
           </div>
           <div className="col-4">
             {/*informace o publikaci*/}
-            {PublicationCardInfo(publication)}
+            <PublicationCardInfo publication={publication}/>
           </div>
         </div>
         <div className="d-flex justify-content-end">

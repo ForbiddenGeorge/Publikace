@@ -8,7 +8,7 @@ function EditCard({onClose, publicationId}) {
 
     const buttonRef = useRef(null); //Potřeba pro znovuzapnutí modalu z jiné komponenty
 
-  useEffect(() => {
+  useEffect(() => {   //HODNĚ BLBĚ
     const tlacidlo = document.getElementById('EditButtonMain');
     if(tlacidlo) {
         tlacidlo.style.display = "block";

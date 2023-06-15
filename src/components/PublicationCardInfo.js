@@ -1,5 +1,5 @@
 //část karty publikace, informace o publikaci
-function PublicationCardInfo(publication){
+function PublicationCardInfo({publication}){
     return(
         <div className="panel">
         <p>Datum zveřejnění: {publication.publishedDate}</p>
