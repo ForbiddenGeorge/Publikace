@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 
 //Tady ukazuji select, volám query a posílám příslušná data do další komponenty, která volá mutaci
 function EditCardNavBarAddAuthorSelect({publicationId, onselect}) {
+  const users = useSelector((state) =>state.users);
  // const [users, setUsers] = useState([]);
   // const [selectedUserId, setSelectedUserId] = useState(true);
   // const users = useSelector((state) =>state.users);

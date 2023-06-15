@@ -3,9 +3,12 @@ import { loadData } from 'features/PublicationSlice';
 import { useEffect, useState } from 'react';*/
 import React, { useState } from "react";
 import EditCardNavBarAddAuthorSelect from './EditCardNavBarAddAuthorSelect';
+import { AddAuthorButton } from "actions/AddAuthorButton";
+import { useSelector } from "react-redux";
 
 function EditCardNavBarAddAuthor({publicationId}) {
     //Tělo jedné karty, volám samotný select
+    const users = useSelector((state) =>state.users);
     const [selectedAuthor, setSelectedAuthor] = useState()
     const onselect = (author) => {
         setSelectedAuthor(author)

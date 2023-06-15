@@ -6,7 +6,8 @@ function EditCardNavBarEditInfo({ publicationId }) {
     const publications = useSelector((state) => state.publications); //pole všech publikací, výběr správné publikace
     const publicationTypes = useSelector((state) => state.publicationTypes) //Typy těch publikací
     const [publicationType, setPublicationType] = useState('');//Vybraný typ publikace
-    const selectedPublication = publications.find((publication) => publication.id === publicationId.publicationId); //konkrétní publikace
+    console.log("Id publiakce: ", publicationId)
+    const selectedPublication = publications.find((publication) => publication.id === publicationId); //konkrétní publikace
     console.log("Ta moje publikace ", selectedPublication);
     const [name, setName] = useState(''); // proměnná pro ukládání názvu, bude i pro další inputy
     

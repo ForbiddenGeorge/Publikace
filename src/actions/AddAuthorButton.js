@@ -4,26 +4,31 @@ import { PublicationAddAuthorMutation } from 'querries/PublicationAddAuthorMutat
 import { useDispatch } from "react-redux";
 import {InsertAuthor} from 'features/PublicationSlice';
 
-export const PublicationAddAuthorAsyncAction = ({userId, publicationId, AuthorNumber}) => (dispatch, getState) => {   {/*ŠTEFEK*/}
-  const bodyFunction = async() => {
+
+export const PublicationAddAuthorAsyncAction = ({userId, publicationId, AuthorNumber}) => (dispatch, getState) => {  
+  
+
+  const BodyFunction = async() => {
+    const publications = useSelector((state) => state.publications);
+    const selectedPublication = publications.find((publication) => publication.id === publicationId.publicationId.publicationId);
     const response = await PublicationAddAuthorMutation( //volám samotnou mutaci s potřebnými proměnými
-        { userId: selectedUserId, 
-          publicationId: selectedPublication.id, 
-          AuthorNumber: NumberOfAuthors}
+        { userId: userId, 
+          publicationId: publicationId, 
+          AuthorNumber: AuthorNumber}
         )
       const data = await response.json(); //získávám všechna data co mám
       console.log(data.data.authorInsert.author);
       //aktualizuji store, dochází tedy k přerendrování všech komponent kde se využívá pole publikací
       return dispatch(InsertAuthor({ author: data.data.authorInsert.author, publicationId: selectedPublication.id })); //lokální dispatch
         }
-    return bodyFunction();
+    return BodyFunction();
 }
 
 
 
 export const AddAuthorButton= ({selectedUserId, selectedPublicationId, AuthorNumber}) => {
 
-  const publications = useSelector((state) => state.publications); //beru si array publikací
+ // const publications = useSelector((state) => state.publications); //beru si array publikací
 const dispatch = useDispatch();
 
  const handleAddAuthor = () => { //OnClick funkce, volá mutaci ----
