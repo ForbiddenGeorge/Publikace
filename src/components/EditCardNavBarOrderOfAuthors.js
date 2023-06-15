@@ -28,8 +28,8 @@ function EditCardNavBarOrderOfAuthors({ publicationId }) {
         console.log("Id usera: ", author.id,"Order usera: ", author.order, "Share usera: ", author.share)
         ChangeAuthorOrderMutation({
           userId: author.id,
-          userOrder: author.order,
           userShare: author.share,
+          userOrder: author.order,
           lastchange: author.lastchange
         });
       console.log('Mutation zavolána');

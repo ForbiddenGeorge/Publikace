@@ -5,6 +5,7 @@ function PublicationCardAuthors(author){
             <h5>{author.user.name} {author.user.surname}</h5>
             <p>Email: {author.user.email}</p>
             <p>Podíl: {author.share}</p>
+            <p>Pořadí: {author.order}</p>
         </div>
     )
 }

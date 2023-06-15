@@ -33,7 +33,7 @@ const PublicationCard = ({ publication }) => {
           <div className="col-4">
             {/*Výpis pro každého autora */}
             {publication.authors.map((author) => (
-              <div className="panel" key={author.id}>
+              <div className="panel" key={author.order}>
                 {PublicationCardAuthors(author)}
               </div>
             ))}
