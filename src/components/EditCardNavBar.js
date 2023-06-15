@@ -34,7 +34,7 @@ return(
                 </div>
                 <div className="tab-pane fade" id="OrderOfAuthors">
                     {/*Úprava  pořadí autorů v publikaci*/}
-                    <EditCardNavBarOrderOfAuthors/>
+                    <EditCardNavBarOrderOfAuthors publicationId={publicationId}/>
                 </div>
                 <div className="tab-pane fade" id="ChangeOfContribution">
                     {/*Změna podílu autorů na publikaci */}
