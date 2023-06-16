@@ -1,5 +1,7 @@
 třeba se podívat na mutace jak ukládají data, abych s nimi pak mohl pracovat dále v jinýc kartách
 
+předělat zobrazování autorů podle pořadí, ne jak jsou v základu
+
 dodat podmínky pro některé mutace - jestli třeba autor už u té publikace není
 
 Přidávání stejného autora funguje jen když přidávám úplně novou publikaci, celkem Mind Fuck..

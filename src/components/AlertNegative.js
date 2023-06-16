@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Alert, Modal, ModalBody } from 'react-bootstrap';
+import { Alert, Modal } from 'react-bootstrap';
 
-function AlertPositive({ info, onClose }) {
+function AlertNegative({ info, onClose }) {
   const [showAlert, setShowAlert] = useState(true);
 
   const handleClose = () => {
@@ -14,26 +14,22 @@ function AlertPositive({ info, onClose }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       handleClose();
-    }, 1250);
+    }, 1500);
 
     return () => {
       clearTimeout(timer);
     };
   }, []);
 
-  /*<Button variant="outline-success" onClick={handleClose}>
-          Zavřít
-        </Button> */
+  
 
   return (
     <Modal show={showAlert} onHide={handleClose} backdrop={false}>
-        <div className="panel">
-        <Alert variant="success">
+        <Alert variant="danger">
         <p>{info}</p>
         </Alert>
-        </div>
     </Modal>
   );
 }
 
-export default AlertPositive;
+export default AlertNegative;

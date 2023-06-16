@@ -4,13 +4,16 @@ import { EditCardNavBarChangeContributionMutation } from 'querries/EditCardNavBa
 import { UpdateAuthorShare } from 'features/PublicationSlice';
 import { useDispatch } from 'react-redux';
 import AlertPositive from './AlertPositive';
+import AlertNegative from './AlertNegative';
+
 function EditCardNavBarChangeContribution({ publicationId }) {
   const publications = useSelector((state) => state.publications);
   const publication = publications.find((pub) => pub.id === publicationId.publicationId);
   const [authors, setAuthors] = useState(publication ? [...publication.authors] : []);
   const dispatch = useDispatch();
+  
   const [showAlert, setShowAlert] = useState(false);
-
+  const [showAlert1, setShowAlert1] = useState(false);
 
   const handleSave = () => {
     let suma = 0;
@@ -31,11 +34,11 @@ function EditCardNavBarChangeContribution({ publicationId }) {
         });
         console.log('Mutation finished');
         dispatch(UpdateAuthorShare({ publicationId: publication.id, authorId: Contributor.id, newShare: Contributor.share }));
-        setShowAlert(true);
       });
 
-      
+      setShowAlert(true);
     } else {
+      setShowAlert1(true);
       console.log('Total sum must be equal to one. Yours is:', sum);
     }
   };
@@ -45,6 +48,11 @@ function EditCardNavBarChangeContribution({ publicationId }) {
     const updatedAuthors = [...authors];
     updatedAuthors[authorIndex] = { ...updatedAuthors[authorIndex], share };
     setAuthors(updatedAuthors);
+  };
+
+  const handleCloseAlert = () => {
+    setShowAlert(false);
+    setShowAlert1(false);
   };
 
   return (
@@ -90,7 +98,8 @@ function EditCardNavBarChangeContribution({ publicationId }) {
       <button type="button" className="btn bg-success text-white" onClick={handleSave}>
         Uložit změny
       </button>
-      {showAlert && <AlertPositive info={"Nové podíly úspěšně uloženy"}/>}
+      {showAlert && <AlertPositive info={"Nové podíly úspěšně uloženy"} onClose={handleCloseAlert} />}
+      {showAlert1 && <AlertNegative info={"Celkový podíl nemůže přesáhnout 100%"} onClose={handleCloseAlert} />}
     </div>
   );
 }
