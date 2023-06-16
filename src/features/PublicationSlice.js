@@ -42,6 +42,20 @@ const publicationSlice = createSlice({
       }
       return state;
     },
+    UpdateAuthorShare: (state, action) => {
+      const { publicationId, authorId, newShare } = action.payload;
+      const publication = state.find((p) => p.id === publicationId);
+      if (publication) {
+        const updatedAuthors = publication.authors.map((author) =>
+          author.id === authorId ? { ...author, share: newShare } : author
+        );
+        return state.map((p) =>
+          p.id === publicationId ? { ...p, authors: updatedAuthors } : p
+        );
+      }
+      return state;
+    },
+
     InsertPublication: (state, action) => {
       const newPublication = action.payload.selectedPublication;
       //const publications = action.payload.publications;
@@ -56,6 +70,6 @@ const publicationSlice = createSlice({
   },
 });
 
-export const { loadData, InsertAuthor, InsertPublication, UpdateAuthorOrder } = publicationSlice.actions;
+export const { loadData, InsertAuthor, InsertPublication, UpdateAuthorOrder, UpdateAuthorShare } = publicationSlice.actions;
 
 export default publicationSlice.reducer;

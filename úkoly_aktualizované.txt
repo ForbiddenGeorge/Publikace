@@ -1,9 +1,9 @@
-PONDĚLÍ/ÚTERÝ = Předělat zbytek rerenderů automaticky, ne přes reload Page
-(asi dost velká komplikace u Navbar, mezi jednotlivými kartami, přidám autora a pak hned chci upravit jeho podíl, zatím nejde)
+třeba se podívat na mutace jak ukládají data, abych s nimi pak mohl pracovat dále v jinýc kartách
 
-Opravit možnost přidávání stejného autora k více publikacím( přes publicationId??) - možná nejde, potřebuji Štefka (Kávič)
+dodat podmínky pro některé mutace - jestli třeba autor už u té publikace není
 
-ČTVRTEK = Udělat ChangeAuthorOrder
+Přidávání stejného autora funguje jen když přidávám úplně novou publikaci, celkem Mind Fuck..
+
 
 NAVÍC = Přidat alerty pro všechny podmínky (částečně místo logů pro uživatele)- (všechny složky navbaru + addPublication)
 

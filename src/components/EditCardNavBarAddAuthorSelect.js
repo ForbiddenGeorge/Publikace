@@ -8,24 +8,7 @@ function EditCardNavBarAddAuthorSelect(publicationId) {
   const [selectedUserId, setSelectedUserId] = useState(true);
   const users = useSelector((state) =>state.users);
   console.log("Users array: ", users);
- /* useEffect(() => { přesunut do PublicationLoad
-    //Volám si pole uživatelů pomocí query 
-    const fetchData = async () => {
-      try {
-        const response = await UserPageQuery();
-        const data = await response.json();
-       // const fetchedUsers = data.data.userPage;
-        dispatch(loadUsersData(data.data.userPage));
-        console.log('Users fetched');
-        console.log(data.data.userPage);
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      }
-    };
-
-    fetchData();
-  }, [dispatch, users]);*/
-  //Při výběru autora ze selectu si uložím jeho ID
+  
   const handleSelectChange = (event) => {
     const selectedUserId = event.target.value;
     setSelectedUserId(selectedUserId);
