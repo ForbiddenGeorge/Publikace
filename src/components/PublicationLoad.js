@@ -7,9 +7,22 @@ import { loadUsersData } from 'features/UserPageSlice';
 import { UserPageQuery } from 'querries/UserPageQuery';
 
 //Tady dělám fetch publikací a userů z databáze a pro každou publikaci volám komponentu PublicationCard
- const PublicationLoad = () => {
+const PublicationLoad = (Authors) => {
   const publications = useSelector((state) => state.publications);
   const dispatch = useDispatch();
+
+  //console.log('Authors filtered XXXX: ', Authors[0]);
+
+  const filteredPublications = [];
+
+  publications.forEach((publication) => {
+    //console.log('Authors of selPub XXXX: ', publication.authors);
+
+    if (publication.authors.some((author) => Authors.Authors.includes(author.id))) {
+      //console.log('Added pub XXXX: ', publication.name);
+      filteredPublications.push(publication);
+    }
+  });
 
   useEffect(() => {
     //fetch pro publikace
@@ -17,7 +30,7 @@ import { UserPageQuery } from 'querries/UserPageQuery';
       try {
         const response = await GroupsSelectQuery();
         const data = await response.json();
-        console.log('Response:', data);
+        //console.log('Response:', data);
         //Ty data jsou prázdná, warum??
         if(data && data.data ){
           dispatch(loadData(data.data.publicationPage));
@@ -36,8 +49,8 @@ import { UserPageQuery } from 'querries/UserPageQuery';
         const data = await response.json();
        // const fetchedUsers = data.data.userPage;
         dispatch(loadUsersData(data.data.userPage));
-        console.log('Users fetched');
-        console.log(data.data.userPage);
+        //console.log('Users fetched');
+        //console.log(data.data.userPage);
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
@@ -48,10 +61,19 @@ import { UserPageQuery } from 'querries/UserPageQuery';
   }, [dispatch])
   ;
   //Pro každou z publikací udělám novou kartu
-  return (
-    publications.map((pub) => (
-      <PublicationCard key={pub.id} publication={pub}/>
-  )))
+
+  if (Authors.Authors.length===0) {
+    return (publications.map((pub) => (
+      <PublicationCard key={pub.id} publication={pub}/>)))
+  }
+  else {
+    return filteredPublications.map((pub) => (
+      <PublicationCard key={pub.id} publication={pub} />
+  ));
+  }
+  
+  // return (publications.map((pub) => (
+  //   <PublicationCard key={pub.id} publication={pub}/>)))
 }
 
 export default PublicationLoad;

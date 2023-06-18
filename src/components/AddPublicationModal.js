@@ -33,7 +33,7 @@ function AddPublicationModal() {
     const selectedPublication = data.data.publicationInsert.publication;
     dispatch(InsertPublication({selectedPublication: selectedPublication}))
     //Publikace se správně pošle, ale bez autorů, což je správně
-    console.log("data after the AddPublicationMutation: ", data.data);
+    //console.log("data after the AddPublicationMutation: ", data.data);
     //Prvně vytvořím publikací bez autorů, následně si získám id té nové publikace a přidám k ní ty autory
     let AuthorOrder = 0;
     for (const authorId of selectedAuthors) {
@@ -105,10 +105,7 @@ function AddPublicationModal() {
         {/*Select pro výběr autorů k publikaci */}
         <div className='row mb-3'>
             <div className='col-12'>
-            <AddPublicationModalInsertUsers
-            selectedAuthors={selectedAuthors}
-            setSelectedAuthors={setSelectedAuthors}
-              />
+            <AddPublicationModalInsertUsers selectedAuthors={selectedAuthors} setSelectedAuthors={setSelectedAuthors}/>
             </div>
         </div>
         {/**Button typu submit, volá mutaci */}

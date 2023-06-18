@@ -1,14 +1,16 @@
 import { authorizedFetch } from './authorizedFetch';
 
 //Mutace pro změnu informací o publikaci
-const PublicationUpdateMutationJSON = () => ({
+const PublicationUpdateMutationJSON = (pubId, pubName, pubLastChange, pubTypeId, pubReference, pubPlace) => ({
     query: `
     mutation {
         publicationUpdate(publication: {
-        id: "cb3c3978-e716-46ac-9a3b-bb8f9d806a46",
-        name: "IT Technologie 2",
-        lastchange: "2023-05-03T19:23:42.703096",
-        publishedDate: "2022-04-24",
+        id: "${pubId}",
+        name: "${pubName}",
+        lastchange: "${pubLastChange}",
+        publicationTypeId: "${pubTypeId}",
+        reference: "${pubReference}",
+        place: "${pubPlace}"
          }){
             id
             msg
@@ -18,10 +20,10 @@ const PublicationUpdateMutationJSON = () => ({
     }
   }
 }
-  `
+`
 });
 
 export const PublicationUpdateMutation = (props) => 
   authorizedFetch('/gql', {
-    body: JSON.stringify(PublicationUpdateMutationJSON())
+    body: JSON.stringify(PublicationUpdateMutationJSON(props.pubId, props.pubName, props.pubLastChange, props.pubTypeId, props.pubReference, props.pubPlace))
   })
