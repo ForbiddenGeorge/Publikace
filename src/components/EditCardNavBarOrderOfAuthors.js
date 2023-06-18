@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { UpdateAuthorOrder } from 'features/PublicationSlice';
 import { ChangeAuthorOrderMutation } from 'querries/ChangeAuthorOrderMutation';
+import AlertPositive from './AlertPositive';
+import AlertNegative from './AlertNegative';
 
 function EditCardNavBarOrderOfAuthors({ publicationId }) {
   const publications = useSelector((state) => state.publications);
@@ -9,6 +11,8 @@ function EditCardNavBarOrderOfAuthors({ publicationId }) {
     (publication) => publication.id === publicationId.publicationId
   );
   const dispatch = useDispatch();
+  const [showAlert, setShowAlert] = useState(false);
+  const [showAlert1, setShowAlert1] = useState(false);
 
   const [authors, setAuthors] = useState(selectedPublication ? [...selectedPublication.authors] : []);
 
@@ -17,6 +21,11 @@ function EditCardNavBarOrderOfAuthors({ publicationId }) {
       author.id === authorId ? { ...author, order: newOrder } : author
     );
     setAuthors(updatedAuthors);
+  };
+
+  const handleCloseAlert = () => {
+    setShowAlert(false);
+    setShowAlert1(false);
   };
 
   const handleSaveOrderChange = () => {
@@ -37,9 +46,10 @@ function EditCardNavBarOrderOfAuthors({ publicationId }) {
       console.log('A dispatch taky');
       });
       
-
+      setShowAlert(true);
     } else {
       console.log('Pořadí autorů musí být unikátní');
+      setShowAlert1(true);
     }
   };
 
@@ -80,6 +90,8 @@ function EditCardNavBarOrderOfAuthors({ publicationId }) {
       <button type='button' className='btn bg-success text-white' onClick={handleSaveOrderChange}>
         Uložit pořadí
       </button>
+      {showAlert && <AlertPositive info={"Pořadí autorů změněno"} onClose={handleCloseAlert} />}
+      {showAlert1 && <AlertNegative info={"Změny neuloženy"} onClose={handleCloseAlert} />}
     </div>
   );
 }

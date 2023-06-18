@@ -3,11 +3,18 @@ import { PublicationAddAuthorMutation } from 'querries/PublicationAddAuthorMutat
 //import { useState } from "react";
 import { useDispatch } from "react-redux";
 import {InsertAuthor} from 'features/PublicationSlice';
+import AlertPositive from "components/AlertPositive";
+import AlertNegative from "components/AlertNegative";
+import { useState } from "react";
+
 
 export const AddAuthorButton= ({selectedUserId, selectedPublicationId}) => {
 
   const publications = useSelector((state) => state.publications); //beru si array publikací
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
+
+  const [showAlert, setShowAlert] = useState(false);
+  const [showAlert1, setShowAlert1] = useState(false);
 
  const handleAddAuthor = async () => { //OnClick funkce, volá mutaci
   try {
@@ -31,18 +38,29 @@ const dispatch = useDispatch();
       //aktualizuji store, dochází tedy k přerendrování všech komponent kde se využívá pole publikací
       dispatch(InsertAuthor({ author: data.data.authorInsert.author, publicationId: selectedPublication.id }));
       console.log('Author added successfully!');
+      setShowAlert(true);
     } else {
       console.log('Selected publication not found!');
+      setShowAlert1(true);
     }
   } catch (error) {
     console.error('Error adding author:', error);
+    setShowAlert1(true);
   }
+};
+
+const handleCloseAlert = () => {
+  setShowAlert(false);
+  setShowAlert1(false);
 };
   //vracím čistý button
   return (
-  
+      <div>
       <button className="btn bg-success text-white mt-4 align-left" 
       onClick={handleAddAuthor}
       >Přidat</button>
+      {showAlert && <AlertPositive info={"Autor přidán"} onClose={handleCloseAlert} />}
+      {showAlert1 && <AlertNegative info={"Nepovedlo se přidat uživatele"} onClose={handleCloseAlert} />}
+      </div>
   )
 }

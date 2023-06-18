@@ -29,6 +29,7 @@ const publicationSlice = createSlice({
       });
       return updatedState;
     },
+    
     UpdateAuthorOrder: (state, action) => {
       const { publicationId, authorId, newOrder } = action.payload;
       const publication = state.find((p) => p.id === publicationId);

@@ -6,7 +6,4 @@ dodat podmínky pro některé mutace - jestli třeba autor už u té publikace n
 
 Přidávání stejného autora funguje jen když přidávám úplně novou publikaci, celkem Mind Fuck..
 
-
 NAVÍC = Přidat alerty pro všechny podmínky (částečně místo logů pro uživatele)- (všechny složky navbaru + addPublication)
-
-KÁVÍČ DODĚLAT EDITINFO

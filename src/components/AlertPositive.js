@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Alert, Modal, ModalBody } from 'react-bootstrap';
+import { Alert, Modal } from 'react-bootstrap';
 
 function AlertPositive({ info, onClose }) {
   const [showAlert, setShowAlert] = useState(true);
@@ -26,9 +26,9 @@ function AlertPositive({ info, onClose }) {
         </Button> */
 
   return (
-    <Modal show={showAlert} onHide={handleClose} backdrop={false}>
+    <Modal show={showAlert} onHide={handleClose}>
         <div className="panel">
-        <Alert variant="success">
+        <Alert variant="success" className='mb-n3'>
         <p>{info}</p>
         </Alert>
         </div>

@@ -6,6 +6,8 @@ import { PublicationAddAuthorMutation } from 'querries/PublicationAddAuthorMutat
 import { useDispatch } from 'react-redux';
 import { InsertAuthor } from 'features/PublicationSlice';
 import { InsertPublication } from 'features/PublicationSlice';
+import AlertPositive from './AlertPositive';
+
 function AddPublicationModal() {
   //konstanty pro ukládání hodnot z inputů
   const [title, setTitle] = useState('');
@@ -13,6 +15,7 @@ function AddPublicationModal() {
   const [location, setLocation] = useState('');
   const [reference, setReference] = useState('');
   const [selectedAuthors, setSelectedAuthors] = useState([]);
+  const [showAlert, setShowAlert] = useState(false);
 
    //beru si druhy všech publikací, které pak vužiji v selectu
   const publicationTypes = useSelector((state) => state.publicationTypes);
@@ -43,8 +46,12 @@ function AddPublicationModal() {
       dispatch(InsertAuthor({ author: authorData.data.authorInsert.author, publicationId: selectedPublication.id }));
       AuthorOrder += 1;
     }
+    setShowAlert(true);
+    //zavolat funkci co vy vynuluje inputy
+  };
 
-    //Tady já bych potřeboval znova dotáhnout ten nový publication s těmi autory a to dispatchnout
+  const handleCloseAlert = () => {
+    setShowAlert(false);
   };
 
   return (
@@ -109,6 +116,7 @@ function AddPublicationModal() {
           Přidat
         </button>
       </form>
+      {showAlert && <AlertPositive info={"Publikace přidána"} onClose={handleCloseAlert} />}
     </div>
   );
 }
