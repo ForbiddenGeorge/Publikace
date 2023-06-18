@@ -19,7 +19,7 @@ function Filter() {
           
         {/*Select pro výběr autorů k publikaci */}
         <div className='row mb-3'>
-            <div className='col-10'> <FilterByUser selectedAuthors={selectedAuthors} setSelectedAuthors={setSelectedAuthors}/> </div>
+            <div className='col-9'> <FilterByUser selectedAuthors={selectedAuthors} setSelectedAuthors={setSelectedAuthors}/> </div>
             <div className='col-1'> <button type="submit" className="btn bg-success text-white"> Filtrovat </button> </div>{/**Button typu submit, volá mutaci */} 
         </div>
       </form>

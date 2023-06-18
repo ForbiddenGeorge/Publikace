@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 // import { SaveEditedPublication } from "./SaveEditedPublicationButton";
 import { PublicationUpdateMutation } from "querries/PublicationUpdateMutation";
-import { type } from "@testing-library/user-event/dist/type";
+//import { type } from "@testing-library/user-event/dist/type";
 //tady to je mutace kterou budeš volat na kliknutí buttonu, zatím není zprovozněná
 //import { PublicationUpdateMutation } from "querries/PublicationUpdateMutation";
 
@@ -10,39 +10,40 @@ function EditCardNavBarEditInfo({ publicationId }) {
     const publications = useSelector((state) => state.publications); //pole všech publikací, z tohoto pole pak vyberu naši správnou publikaci
     const publicationTypes = useSelector((state) => state.publicationTypes) //Typy těch publikací
     const [publicationType, setPublicationType] = useState('');//Uložený vybraný typ publikace
-    const selectedPublication = publications.find((publication) => publication.id === publicationId.publicationId); //tady je ta konkrétní publikace
+    const selectedPublication = publications.find((publication) => publication.id === publicationId.publicationId); //tady je ta konkrétní publikace se kterou pracujeme
     //console.log("Ta moje publikace ", selectedPublication);
-    const [name, setName] = useState(''); // proměnná pro ukládání názvu, takhle budeš mít i pro další inputy
-    const [place, setPlace] = useState('');
-    const [reference, setReference] = useState(''); 
+    const [name, setName] = useState(''); // proměnná pro ukládání názvu
+    const [place, setPlace] = useState(''); // proměnná pro ukládání místa
+    const [reference, setReference] = useState(''); // proměnná pro ukládání reference
 
     const handlePublicationUpdate = () =>{
-
-    // console.log("XXName: ", name)
-    // console.log("XXType: ",publicationType)
-    // console.log("XXReference: ", reference)
-    // console.log("XXPlace: ", place)
-
-    if (name === null) { name = selectedPublication.name; }
-    if (reference === null) { reference = selectedPublication.reference; }
-    if (place === null) { place = selectedPublication.place; }
-    if (publicationType === null) { publicationType = selectedPublication.publicationtype.id; }
       
-      //VOLÁNÍ MUTACE
+      // OŠETŘENÍ PRÁZDNÝCH MÍST
+      // Pokud se při editaci (stisku tlačítka) nezmění jistá hodnota
+      const updatedName = name || selectedPublication.name;
+      const updatedType = publicationType || selectedPublication.publicationtype.id;
+      const updatedReference = reference || selectedPublication.reference;
+      const updatedPlace = place || selectedPublication.place;
+      
+      //VOLÁNÍ MUTACE Původní verze
+      // PublicationUpdateMutation({ 
+      //   pubId:selectedPublication.id,
+      //   pubName:name,
+      //   pubLastChange: selectedPublication.lastchange,
+      //   pubTypeId: publicationType,
+      //   pubReference: reference,
+      //   pubPlace: place
+      // })
+
+      // VOLÁNÍ MUTACE
       PublicationUpdateMutation({ 
         pubId:selectedPublication.id,
-        pubName:name,
+        pubName:updatedName,
         pubLastChange: selectedPublication.lastchange,
-        pubTypeId: publicationType,
-        pubReference: reference,
-        pubPlace: place
+        pubTypeId: updatedType,
+        pubReference: updatedReference,
+        pubPlace: updatedPlace
       })
-
-      console.log("Name: ", name)
-      console.log("Type: ",publicationType)
-      console.log("Reference: ", reference)
-      console.log("Place: ", place)
-      console.log("Type: ", selectedPublication.publicationtype.id)
     }
    
     
@@ -52,18 +53,14 @@ function EditCardNavBarEditInfo({ publicationId }) {
                 <label htmlFor="test" className="m-3">Jméno publikace</label>
             <input onChange={(e) => setName(e.target.value)} placeholder={selectedPublication.name} id="test"></input>
             </div>
-
             <div>
                 <label htmlFor="test" className="m-3">Reference</label>
             <input onChange={(e) => setReference(e.target.value)} placeholder={selectedPublication.reference} id="test"></input>
             </div>
-
             <div>
                 <label htmlFor="test" className="m-3">Místo</label>
             <input onChange={(e) => setPlace(e.target.value)} placeholder={selectedPublication.place} id="test"></input>
             </div>
-
-
             <select onChange={(e) => setPublicationType(e.target.value)} className="form-select" aria-label="Default select example" >
               <option value={"Hej"}>
                   Seznam typů publikací
@@ -73,8 +70,7 @@ function EditCardNavBarEditInfo({ publicationId }) {
                   {Type.name}
                 </option>
               ))}
-            </select>
-            
+            </select>            
             <button type="button" className="btn bg-success text-white" onClick={handlePublicationUpdate}>Uložit</button>
         </div>
     );
