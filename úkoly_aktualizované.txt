@@ -1,9 +1,7 @@
-třeba se podívat na mutace jak ukládají data, abych s nimi pak mohl pracovat dále v jinýc kartách
+třeba se podívat na mutace jak ukládají data, abych s nimi pak mohl pracovat dále v jinýc kartách - na dlouho
 
-předělat zobrazování autorů podle pořadí, ne jak jsou v základu
+předělat zobrazování autorů podle pořadí, ne jak jsou v základu - snad rychle
 
-dodat podmínky pro některé mutace - jestli třeba autor už u té publikace není
+dodat podmínky pro některé mutace - jestli třeba autor už u té publikace není - snad rychle
 
 Přidávání stejného autora funguje jen když přidávám úplně novou publikaci, celkem Mind Fuck..
-
-NAVÍC = Přidat alerty pro všechny podmínky (částečně místo logů pro uživatele)- (všechny složky navbaru + addPublication)
