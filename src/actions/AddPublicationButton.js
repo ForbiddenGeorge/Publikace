@@ -9,7 +9,7 @@ function AddPublication({types}) {
       {/*Neust8le viditelný button pro otevření modalu*/ }
       <button
         type="button"
-        className="btn bg-success text-white mt-3 mx-2"
+        className="btn bg-success text-white mt-3 mb-2 mx-2"
         data-bs-toggle="modal"
         data-bs-target="#AddPublicationModal">
         Přidat publikaci

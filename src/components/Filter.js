@@ -18,9 +18,17 @@ function Filter() {
       <form onSubmit={handleSubmit}>
           
         {/*Select pro výběr autorů k publikaci */}
-        <div className='row mb-3'>
-            <div className='col-9'> <FilterByUser selectedAuthors={selectedAuthors} setSelectedAuthors={setSelectedAuthors}/> </div>
-            <div className='col-1'> <button type="submit" className="btn bg-success text-white"> Filtrovat </button> </div>{/**Button typu submit, volá mutaci */} 
+        <div className='container mb-5 mt-5'>
+        <div className='panel'>
+        <div className='row mx-1'>
+            <div className='col-10'> 
+            <FilterByUser selectedAuthors={selectedAuthors} setSelectedAuthors={setSelectedAuthors}/> 
+            </div>
+            <div className='col-2'> 
+            <button type="submit" className="btn bg-success text-white"> Filtrovat podle autora</button>
+             </div>{/**Button typu submit, volá mutaci */} 
+        </div>
+        </div>
         </div>
       </form>
       <PublicationLoad Authors={selectedAuthors}/>

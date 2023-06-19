@@ -15,15 +15,14 @@ function FilterByUser({ selectedAuthors, setSelectedAuthors }) {
   }));
 
   return (
-    <div>
-      <p>Filtrovat podle autora:</p>
+   
       <Select
         options={options}
         isMulti
         value={options.filter((option) => (selectedAuthors ?? []).includes(option.value))}
         onChange={handleAuthorSelection}
       />
-    </div>
+
   );
 }
 
