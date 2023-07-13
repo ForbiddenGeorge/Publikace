@@ -15,6 +15,7 @@ function EditCardNavBarChangeContribution({ publicationId }) {
   const [showAlert, setShowAlert] = useState(false);
   const [showAlert1, setShowAlert1] = useState(false);
 
+  // predelat na async function (parametr bude authors) (=> dispatch)
   const handleSave = () => {
     let suma = 0;
     authors.forEach((celek) => {

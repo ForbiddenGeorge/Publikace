@@ -7,22 +7,12 @@ import { loadUsersData } from 'features/UserPageSlice';
 import { UserPageQuery } from 'querries/UserPageQuery';
 
 //Tady dělám fetch publikací a userů z databáze a pro každou publikaci volám komponentu PublicationCard
-const PublicationLoad = (Authors) => {
+//const PublicationLoad = (Authors) => {
+const PublicationLoad = () => {
   const publications = useSelector((state) => state.publications);
   const dispatch = useDispatch();
 
-  //console.log('Authors filtered XXXX: ', Authors[0]);
-
   const filteredPublications = [];
-
-  publications.forEach((publication) => {
-    //console.log('Authors of selPub XXXX: ', publication.authors);
-
-    if (publication.authors.some((author) => Authors.Authors.includes(author.id))) {
-      //console.log('Added pub XXXX: ', publication.name);
-      filteredPublications.push(publication);
-    }
-  });
 
   useEffect(() => {
     //fetch pro publikace
@@ -61,19 +51,9 @@ const PublicationLoad = (Authors) => {
   }, [dispatch])
   ;
   //Pro každou z publikací udělám novou kartu
-
-  if (Authors.Authors.length===0) {
-    return (publications.map((pub) => (
-      <PublicationCard key={pub.id} publication={pub}/>)))
-  }
-  else {
-    return filteredPublications.map((pub) => (
-      <PublicationCard key={pub.id} publication={pub} />
-  ));
-  }
   
-  // return (publications.map((pub) => (
-  //   <PublicationCard key={pub.id} publication={pub}/>)))
+  return (publications.map((pub) => (
+    <PublicationCard key={pub.id} publication={pub}/>)))
 }
 
 export default PublicationLoad;

@@ -13,8 +13,8 @@ function App() {
     <div className="App">
       <TopHeader/> {/*Nadpis stránky*/}
       <PublicationTypeLoad/>{/*Načtení typů publikací*/}
-      <Filter/>
-      {/* <PublicationLoad/> */}
+      {/* <Filter/> */}
+      <PublicationLoad/>
       {/* <PublicationLoad Authors={selectedAuthors}/> */}
     </div>
   );
