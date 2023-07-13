@@ -26,12 +26,12 @@ function Filter() {
             </div>
             <div className='col-2'> 
             <button type="submit" className="btn bg-success text-white"> Filtrovat podle autora</button>
-             </div>{/**Button typu submit, volá mutaci */} 
+            </div>{/**Button typu submit, volá mutaci */} 
         </div>
         </div>
         </div>
       </form>
-      <PublicationLoad Authors={selectedAuthors}/>
+      {/* <PublicationLoad Authors={selectedAuthors}/> */}
     </div>
   );
 }
