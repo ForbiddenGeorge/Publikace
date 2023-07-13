@@ -7,6 +7,12 @@ import EditCardNavBarEditInfo from './EditCardNavBarEditInfo';
 
 //čistá grafika, obsah modalu EditCard
 function EditCardNavBar(publicationId){
+/**
+   * Grafika a obsah modálního okna EditCard.
+   *
+   * Parametry:
+   * - publicationId (string): ID publikace.
+   */    
 return(
     <div className="card text-center ">
         {/*Vytvořím kartu s NavBarem, který podle ID spouští příslušná okna/komponenty*/}

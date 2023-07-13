@@ -1,5 +1,9 @@
 //Nadpis celé stránky
 function TopHeader(){
+    /**
+   * Komponenta pro zobrazení nadpisu stránky.
+   *
+   */
     return(
     
     <div className="grid text-center"> 

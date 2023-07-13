@@ -9,6 +9,10 @@ import { UserPageQuery } from 'querries/UserPageQuery';
 //Tady dělám fetch publikací a userů z databáze a pro každou publikaci volám komponentu PublicationCard
 //const PublicationLoad = (Authors) => {
 const PublicationLoad = () => {
+  /**
+ * Komponenta pro načítání publikací a uživatelů z databáze a zobrazování jednotlivých publikací.
+ *
+ */
   const publications = useSelector((state) => state.publications);
   const dispatch = useDispatch();
 

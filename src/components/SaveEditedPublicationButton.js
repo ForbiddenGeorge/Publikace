@@ -2,7 +2,15 @@ import { PublicationUpdateMutation } from '/queries/PublicationUpdateMutation';
 
 
 export const SaveEditedPublication = ({ pubId, pubLastChange, pubName, pubTypeId }) => {
-
+  /**
+ * Komponenta pro uložení upravené publikace.
+ *
+ * Parametry:
+ * - pubId (string): ID publikace.
+ * - pubLastChange (string): Poslední změna publikace.
+ * - pubName (string): Název publikace.
+ * - pubTypeId (string): ID typu publikace.
+ */
     const handleEditEvent = async () => {
     try{
       console.log("ID: ", pubId);

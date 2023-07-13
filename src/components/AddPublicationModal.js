@@ -9,6 +9,9 @@ import { InsertPublication } from 'features/PublicationSlice';
 import AlertPositive from './AlertPositive';
 
 function AddPublicationModal() {
+  /**
+   * Komponenta modálního okna pro přidání publikace.
+   */
   //konstanty pro ukládání hodnot z inputů
   const [title, setTitle] = useState('');
   const [publicationType, setPublicationType] = useState('');
@@ -22,6 +25,12 @@ function AddPublicationModal() {
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {//Na kliknutí buttonu Přidat, volám tady mutaci
+    /**
+     * Funkce pro odeslání formuláře a volání mutace pro přidání publikace.
+     *
+     * Parametry:
+     * - e (objekt): Událost formuláře.
+     */
     e.preventDefault();
     const response = await AddPublicationMutation({ //samostatná mutace se všemi proměnými
         title: title,
@@ -51,6 +60,9 @@ function AddPublicationModal() {
   };
 
   const handleCloseAlert = () => {
+    /**
+     * Funkce pro zavření upozornění.
+     */
     setShowAlert(false);
   };
 

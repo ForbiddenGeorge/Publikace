@@ -4,7 +4,12 @@ import { useSelector } from 'react-redux';
 
 //Tady ukazuji select, volám query a posílám příslušná data do další komponenty, která volá mutaci
 function EditCardNavBarAddAuthorSelect(publicationId) {
- // const [users, setUsers] = useState([]);
+  /**
+   * Komponenta zobrazující select pro výběr autora k přidání k publikaci.
+   *
+   * Parametry:
+   * - publicationId (string): ID publikace.
+   */
   const [selectedUserId, setSelectedUserId] = useState(true);
   const users = useSelector((state) =>state.users);
   console.log("Users array: ", users);

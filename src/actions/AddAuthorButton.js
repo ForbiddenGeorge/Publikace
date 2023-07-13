@@ -9,7 +9,16 @@ import { useState } from "react";
 
 
 export const AddAuthorButton= ({selectedUserId, selectedPublicationId}) => {
-
+/**
+   * React komponenta pro tlačítko "Přidat autora".
+   *
+   * Parametry:
+   * - selectedUserId (str): ID vybraného uživatele.
+   * - selectedPublicationId (str): ID vybrané publikace.
+   *
+   * Vrací:
+   * - React komponenta: Vykreslené tlačítko "Přidat autora".
+   */
   const publications = useSelector((state) => state.publications); //beru si array publikací
   const dispatch = useDispatch();
 

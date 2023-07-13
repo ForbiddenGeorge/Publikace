@@ -9,6 +9,12 @@ import PublicationCardInfo from './PublicationCardInfo';
 import EditCard from './EditCard';
 
 const PublicationCard = ({ publication }) => {
+  /**
+   * Komponenta pro zobrazení publikace.
+   *
+   * Parametry:
+   * - publication (object): publikace.
+   */
   const [showEditCard, setShowEditCard] = useState(false);
   //Tyto dvě funkci ukazují a schovávají EditCard modal
   const handleClick = () => {

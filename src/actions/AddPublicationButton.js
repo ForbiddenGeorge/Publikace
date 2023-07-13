@@ -4,6 +4,15 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import AddPublicationModal from 'components/AddPublicationModal';
 
 function AddPublication({types}) {
+    /**
+   * Komponenta pro přidání publikace.
+   *
+   * Parametry:
+   * - types: Typy publikací.
+   *
+   * Vrací:
+   * - React komponenta: Vykreslený obsah pro přidání publikace.
+   */
   return (
     <div className="container-fluid">
       {/*Neust8le viditelný button pro otevření modalu*/ }

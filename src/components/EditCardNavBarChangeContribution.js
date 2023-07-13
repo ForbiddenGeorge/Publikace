@@ -7,6 +7,12 @@ import AlertPositive from './AlertPositive';
 import AlertNegative from './AlertNegative';
 
 function EditCardNavBarChangeContribution({ publicationId }) {
+  /**
+   * Komponenta pro změnu podílu autorů na publikaci.
+   *
+   * Parametry:
+   * - publicationId (object): ID publikace.
+   */
   const publications = useSelector((state) => state.publications);
   const publication = publications.find((pub) => pub.id === publicationId.publicationId);
   const [authors, setAuthors] = useState(publication ? [...publication.authors] : []);

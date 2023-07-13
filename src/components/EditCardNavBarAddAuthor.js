@@ -5,6 +5,12 @@ import React from "react";
 import EditCardNavBarAddAuthorSelect from './EditCardNavBarAddAuthorSelect';
 
 function EditCardNavBarAddAuthor(publicationId) {
+     /**
+   * Tělo jedné karty, která zobrazuje formulář pro přidání autora k publikaci.
+   *
+   * Parametry:
+   * - publicationId (string): ID publikace.
+   */
     //Tělo jedné karty, volám samotný select
     return (
         <div className="container-fluid">

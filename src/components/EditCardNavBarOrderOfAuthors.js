@@ -6,6 +6,12 @@ import AlertPositive from './AlertPositive';
 import AlertNegative from './AlertNegative';
 
 function EditCardNavBarOrderOfAuthors({ publicationId }) {
+  /**
+   * Komponenta pro změnu pořadí autorů v publikaci.
+   *
+   * Parametry:
+   * - publicationId (object): ID publikace.
+   */
   const publications = useSelector((state) => state.publications);
   const selectedPublication = publications.find(
     (publication) => publication.id === publicationId.publicationId

@@ -1,5 +1,9 @@
 // část karty publikace, nadpisy sloupců
 function PublicationCardHeader(){
+    /**
+   * Komponenta pro zobrazení nadpisů karty.
+   *
+   */
     return(
         <div className="p-2 pb-3 pt-3 mb-3 bg-success text-white">
             <div className="row">

@@ -5,6 +5,13 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import EditCardNavBar from './EditCardNavBar';
 
 function EditCard({onClose, publicationId}) {
+  /**
+   * Komponenta pro editaci karty publikace.
+   *
+   * Parametry:
+   * - onClose (funkce): Funkce pro zavření komponenty.
+   * - publicationId (string): ID publikace.
+   */
 
     const buttonRef = useRef(null); //Potřeba pro znovuzapnutí modalu z jiné komponenty
 
@@ -23,7 +30,10 @@ function EditCard({onClose, publicationId}) {
   }, []);
 
   const handleButtonClick = () => { //zavře se modal a pošle se signál do nadřazené komponenty aby se schoval
-        onClose();
+      /**
+     * Funkce pro obsluhu kliknutí na tlačítko pro zavření modálního okna.
+     */ 
+    onClose();
     //window.location.reload();
   };
 
@@ -48,15 +58,3 @@ function EditCard({onClose, publicationId}) {
   );
 }
 export default EditCard;
-
-//V publicationCard kliknu na button, ten zavolá EditCard, která se zobrazí po změnění visibility na true
-//Při kliknutí na X, hodnota visibility se změní na false
-//EditCard nemusí být v App.js, volá ji PublicationCard a tu volá PublicationLoad
-//takže stav viditelnosti můžu spravovat v PublicationCard, jelikož pro každou publikaci bude příslušná editCard
-//anebo nebude, a podle id publikací se bude upravovat jeden editCard.
-//Co je je výhodnější a jednodušší?
-//A při kliknutí, zobrazí se nová stránka, nebo jen velká karta?
-//nová stránka bude možná jednodušší, karta bude mnohem hezčí, zase ale asi složitější.
-
-
-//Ta overflow karta se jmenuje modal, vypadá to dobře, ale bude potřeba hodně soustředění a správného katagolování

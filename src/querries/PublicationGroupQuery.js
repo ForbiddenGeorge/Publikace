@@ -2,6 +2,12 @@ import { authorizedFetch } from '../querries/authorizedFetch'
 
 //Query pro publikace
 export const GroupsSelectQueryJSON = () => ({
+   /**
+   * Funkce pro vytvoření JSON objektu pro dotaz na publikace.
+   *
+   * Vrací:
+   * - objekt: JSON objekt pro dotaz na publikace.
+   */
     "query":
         `{
           publicationPage {
@@ -34,6 +40,12 @@ export const GroupsSelectQueryJSON = () => ({
 
 
 export const GroupsSelectQuery = () =>
+ /**
+   * Funkce pro provádění dotazu na publikace.
+   *
+   * Vrací:
+   * - Promise: Výsledek dotazu na publikace.
+   */
     authorizedFetch('/gql', {
         body: JSON.stringify(GroupsSelectQueryJSON()),
     })

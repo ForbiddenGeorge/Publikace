@@ -2,11 +2,26 @@ import { createSlice } from '@reduxjs/toolkit';
 
 //Slicer pro publikace
 const publicationSlice = createSlice({
+   /**
+   * Slicer pro publikace.
+   *
+   * Vlastnosti:
+   * - name (str): Název sliceru.
+   * - initialState (array): Výchozí stav sliceru (prázdné pole).
+   * - reducers (objekt): Reducery sliceru.
+   */
   name: 'publications',
   initialState: [],
   reducers: {
     //načtení dat
     loadData: (state, action) => {
+       /**
+       * Reducer pro načtení dat.
+       *
+       * Parametry:
+       * - state (array): Stav sliceru.
+       * - action: Akce reduktoru obsahující payload s načtenými daty.
+       */
       const publications = action.payload;
       publications.forEach((publication) => {
         const existingPublication = state.find((p) => p.id === publication.id);
@@ -17,6 +32,16 @@ const publicationSlice = createSlice({
     },
     //Vložení nového autora který trigruje automaticky přerendrování
     InsertAuthor: (state, action) => {
+      /**
+       * Reducer pro vložení nového autora, který triggeruje automatické přerendrování.
+       *
+       * Parametry:
+       * - state (array): Stav sliceru.
+       * - action: Akce reduktoru obsahující payload s novým autorem a ID publikace.
+       *
+       * Vrací:
+       * - array: Aktualizovaný stav sliceru s vloženým novým autorem.
+       */
       const { author, publicationId } = action.payload;
       const updatedState = state.map((publication) => {
         if (publication.id === publicationId) {
@@ -31,6 +56,16 @@ const publicationSlice = createSlice({
     },
     
     UpdateAuthorOrder: (state, action) => {
+      /**
+       * Reducer pro aktualizaci pořadí autora.
+       *
+       * Parametry:
+       * - state (array): Stav sliceru.
+       * - action: Akce reduktoru obsahující payload s ID publikace, ID autora a novým pořadím.
+       *
+       * Vrací:
+       * - array: Aktualizovaný stav sliceru s aktualizovaným pořadím autora.
+       */
       const { publicationId, authorId, newOrder } = action.payload;
       const publication = state.find((p) => p.id === publicationId);
       if (publication) {
@@ -44,6 +79,16 @@ const publicationSlice = createSlice({
       return state;
     },
     UpdateAuthorShare: (state, action) => {
+      /**
+       * Reducer pro aktualizaci podílu autora.
+       *
+       * Parametry:
+       * - state (array): Stav sliceru.
+       * - action: Akce reduktoru obsahující payload s ID publikace, ID autora a novým podílem.
+       *
+       * Vrací:
+       * - array: Aktualizovaný stav sliceru s aktualizovaným podílem autora.
+       */
       const { publicationId, authorId, newShare } = action.payload;
       const publication = state.find((p) => p.id === publicationId);
       if (publication) {
@@ -58,6 +103,16 @@ const publicationSlice = createSlice({
     },
 
     InsertPublication: (state, action) => {
+      /**
+       * Reducer pro vložení nové publikace.
+       *
+       * Parametry:
+       * - state (array): Stav sliceru.
+       * - action: Akce reduktoru obsahující payload s vybranou publikací.
+       *
+       * Vrací:
+       * - array: Aktualizovaný stav sliceru s vloženou novou publikací.
+       */
       const newPublication = action.payload.selectedPublication;
       //const publications = action.payload.publications;
     
