@@ -1,16 +1,17 @@
 import { PublicationUpdateMutation } from '/queries/PublicationUpdateMutation';
 
-
-export const SaveEditedPublication = ({ pubId, pubLastChange, pubName, pubTypeId }) => {
   /**
  * Komponenta pro uložení upravené publikace.
- *
- * Parametry:
- * - pubId (string): ID publikace.
- * - pubLastChange (string): Poslední změna publikace.
- * - pubName (string): Název publikace.
- * - pubTypeId (string): ID typu publikace.
+ * 
+ * @param {string} pubId - ID publikace.
+ * @param {string} pubLastChange - Poslední změna publikace.
+ * @param {string} pubName  Název publikace.
+ * @param {string} pubTypeId - ID typu publikace.
+ * 
+ * @returns {JSX.Element} - The rendered component
  */
+export const SaveEditedPublication = ({ pubId, pubLastChange, pubName, pubTypeId }) => {
+
     const handleEditEvent = async () => {
     try{
       console.log("ID: ", pubId);

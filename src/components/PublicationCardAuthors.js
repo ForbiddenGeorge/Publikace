@@ -1,11 +1,13 @@
 //část karty publikace, seznam autorů a jejich informací
-function PublicationCardAuthors(author){
-    /**
+  /**
    * Komponenta pro zobrazení autorů v publikaci.
    *
-   * Parametry:
-   * - author (object): autor.
+   * @param {object} author - autor.
+   * 
+   * @returns {JSX.Element} - The rendered component
    */
+function PublicationCardAuthors(author){
+  
     return(
         <div>
             <h5>{author.user.name} {author.user.surname}</h5>

@@ -4,14 +4,14 @@ import { UpdateAuthorOrder } from 'features/PublicationSlice';
 import { ChangeAuthorOrderMutation } from 'querries/ChangeAuthorOrderMutation';
 import AlertPositive from './AlertPositive';
 import AlertNegative from './AlertNegative';
-
-function EditCardNavBarOrderOfAuthors({ publicationId }) {
-  /**
+/**
    * Komponenta pro změnu pořadí autorů v publikaci.
    *
-   * Parametry:
-   * - publicationId (object): ID publikace.
+   * @param {string} publicationId - ID publikace.
+   * 
+   * @returns {JSX.Element} - The rendered component
    */
+function EditCardNavBarOrderOfAuthors({ publicationId }) {
   const publications = useSelector((state) => state.publications);
   const selectedPublication = publications.find(
     (publication) => publication.id === publicationId.publicationId

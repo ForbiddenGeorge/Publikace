@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/EditCardNavBar.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/EditCardNavBar.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import EditCardNavBarAddAuthor from './EditCardNavBarAddAuthor';
+import EditCardNavBarChangeContribution from './EditCardNavBarChangeContribution';
+import EditCardNavBarOrderOfAuthors from './EditCardNavBarOrderOfAuthors';
+import EditCardNavBarEditInfo from './EditCardNavBarEditInfo';
+
+/**
+   * Grafika a obsah modálního okna EditCard.
+   *
+   * @param {string} publicationId - ID publikace.
+   * 
+   * @returns {JSX.Element} - The rendered component
+   */ 
+function EditCardNavBar(publicationId){
+   
+return(
+    &lt;div className="card text-center ">
+        {/*Vytvořím kartu s NavBarem, který podle ID spouští příslušná okna/komponenty*/}
+        &lt;div className="card-header bg-light text-dark">
+            &lt;ul className="nav nav-tabs card-header-tabs " id="myTab">
+                &lt;li className="nav-item">
+                    &lt;a href="#AddAuthor" className="nav-link active text-bg-light" data-bs-toggle="tab">Přidání uživatele&lt;/a>
+                &lt;/li>
+                &lt;li className="nav-item">
+                    &lt;a href="#OrderOfAuthors" className="nav-link text-bg-light" data-bs-toggle="tab">Pořadí autorů&lt;/a>
+                &lt;/li>
+                &lt;li className="nav-item">
+                    &lt;a href="#ChangeOfContribution" className="nav-link text-bg-light" data-bs-toggle="tab" >Změna podílu&lt;/a>
+                &lt;/li>
+                &lt;li className="nav-item">
+                    &lt;a href="#Acreditation" className="nav-link text-bg-light" data-bs-toggle="tab" >Informace o publikaci&lt;/a>
+                &lt;/li>
+            &lt;/ul>
+        &lt;/div>
+        &lt;div className="card-body">
+            &lt;div className="tab-content">
+                &lt;div className="tab-pane fade show active" id="AddAuthor">
+                    {/*Přidání autora k publikaci*/}
+                    &lt;EditCardNavBarAddAuthor publicationId={publicationId}/>
+                &lt;/div>
+                &lt;div className="tab-pane fade" id="OrderOfAuthors">
+                    {/*Úprava  pořadí autorů v publikaci*/}
+                    &lt;EditCardNavBarOrderOfAuthors publicationId={publicationId}/>
+                &lt;/div>
+                &lt;div className="tab-pane fade" id="ChangeOfContribution">
+                    {/*Změna podílu autorů na publikaci */}
+                    &lt;EditCardNavBarChangeContribution publicationId={publicationId}/>
+                &lt;/div>
+                &lt;div className="tab-pane fade" id="Acreditation">
+                    {/*Změna informací o publikaci*/}
+                   &lt;EditCardNavBarEditInfo publicationId={publicationId}/>
+                &lt;/div>
+
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
+)
+}
+
+export default EditCardNavBar;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AddPublicationModal">AddPublicationModal</a></li><li><a href="global.html#AddPublicationModalInsertUsers">AddPublicationModalInsertUsers</a></li><li><a href="global.html#EditCard">EditCard</a></li><li><a href="global.html#EditCardNavBar">EditCardNavBar</a></li><li><a href="global.html#EditCardNavBarAddAuthor">EditCardNavBarAddAuthor</a></li><li><a href="global.html#EditCardNavBarAddAuthorSelect">EditCardNavBarAddAuthorSelect</a></li><li><a href="global.html#EditCardNavBarChangeContribution">EditCardNavBarChangeContribution</a></li><li><a href="global.html#EditCardNavBarEditInfo">EditCardNavBarEditInfo</a></li><li><a href="global.html#EditCardNavBarOrderOfAuthors">EditCardNavBarOrderOfAuthors</a></li><li><a href="global.html#PublicationCard">PublicationCard</a></li><li><a href="global.html#PublicationCardAuthors">PublicationCardAuthors</a></li><li><a href="global.html#PublicationCardInfo">PublicationCardInfo</a></li><li><a href="global.html#PublicationCardName">PublicationCardName</a></li><li><a href="global.html#SaveEditedPublication">SaveEditedPublication</a></li><li><a href="global.html#authorizedFetch">authorizedFetch</a></li><li><a href="global.html#name">name</a></li><li><a href="global.html#query">query</a></li><li><a href="global.html#reducer">reducer</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Jul 14 2023 07:59:10 GMT+0200 (středoevropský letní čas)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

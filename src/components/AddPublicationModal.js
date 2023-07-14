@@ -8,10 +8,13 @@ import { InsertAuthor } from 'features/PublicationSlice';
 import { InsertPublication } from 'features/PublicationSlice';
 import AlertPositive from './AlertPositive';
 
+/**
+ * Komponenta modálního okna pro přidání publikace.
+ * 
+ * @returns {JSX.Element} - The rendered component
+ */
 function AddPublicationModal() {
-  /**
-   * Komponenta modálního okna pro přidání publikace.
-   */
+
   //konstanty pro ukládání hodnot z inputů
   const [title, setTitle] = useState('');
   const [publicationType, setPublicationType] = useState('');
@@ -24,13 +27,16 @@ function AddPublicationModal() {
   const publicationTypes = useSelector((state) => state.publicationTypes);
   const dispatch = useDispatch();
 
+ /**
+ * Funkce pro odeslání formuláře a volání mutace pro přidání publikace.
+ *
+ * 
+ * @param {Object} e - Událost formuláře.
+ * 
+ * @returns {promise}
+ */
   const handleSubmit = async (e) => {//Na kliknutí buttonu Přidat, volám tady mutaci
-    /**
-     * Funkce pro odeslání formuláře a volání mutace pro přidání publikace.
-     *
-     * Parametry:
-     * - e (objekt): Událost formuláře.
-     */
+   
     e.preventDefault();
     const response = await AddPublicationMutation({ //samostatná mutace se všemi proměnými
         title: title,

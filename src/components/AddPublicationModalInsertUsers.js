@@ -1,14 +1,16 @@
 import { useSelector } from 'react-redux';
 import Select from 'react-select';
-
-function AddPublicationModalInsertUsers({ selectedAuthors, setSelectedAuthors }) {
   /**
    * Komponenta pro výběr uživatelů v modálním okně pro přidání publikace.
    *
-   * Parametry:
-   * - selectedAuthors (array): Pole vybraných autorů.
-   * - setSelectedAuthors (funkce): Funkce pro nastavení vybraných autorů.
+   * 
+   * @param {array} selectedAuthors - Pole vybraných autorů.
+   * @param {function} setSelectedAuthors - Funkce pro nastavení vybraných autorů.
+   * 
+   * @returns {JSX.Element} - The rendered component
    */
+function AddPublicationModalInsertUsers({ selectedAuthors, setSelectedAuthors }) {
+
   const users = useSelector((state) => state.users);
   //console.log('Users fetched in modal:', users);
 

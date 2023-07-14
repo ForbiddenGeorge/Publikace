@@ -4,14 +4,15 @@ import { useSelector } from "react-redux";
 import { PublicationUpdateMutation } from "querries/PublicationUpdateMutation";
 import AlertPositive from "components/AlertPositive";
 import AlertNegative from "components/AlertNegative";
-
-function EditCardNavBarEditInfo({ publicationId }) {
-  /**
+/**
    * Komponenta pro úpravu informací o publikaci.
    *
-   * Parametry:
-   * - publicationId (object): ID publikace.
+   * @param {string} publicationId - ID publikace.
+   * 
+   * @returns {JSX.Element} - The rendered component
    */  
+function EditCardNavBarEditInfo({ publicationId }) {
+  
   const publications = useSelector((state) => state.publications); //pole všech publikací, z tohoto pole pak vyberu naši správnou publikaci
     const publicationTypes = useSelector((state) => state.publicationTypes) //Typy těch publikací
     const [publicationType, setPublicationType] = useState('');//Uložený vybraný typ publikace

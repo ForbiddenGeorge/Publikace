@@ -1,11 +1,13 @@
 //část karty publikace, informace o publikaci
-function PublicationCardInfo(publication){
-  /**
+ /**
    * Komponenta pro zobrazení informací o publikaci.
    *
-   * Parametry:
-   * - publication (object): publikace.
+   *  @param {object} publication - publikace.
+   * 
+   * @returns {JSX.Element} - The rendered component
    */
+function PublicationCardInfo(publication){
+ 
     return(
         <div className="panel">
         <p>Datum zveřejnění: {publication.publishedDate}</p>

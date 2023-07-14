@@ -1,11 +1,13 @@
 //část karty publikace, jméno samotné publikace
-function PublicationCardName(publication){
-  /**
+ /**
    * Komponenta prozobrazení jména publikaci.
    *
-   * Parametry:
-   * - publication (object): publikace.
+   *  @param {object} publication - publikace.
+   * 
+   * @returns {JSX.Element} - The rendered component
    */
+function PublicationCardName(publication){
+ 
     return(
               <div className="d-flex justify-content-center">
                 <h3>

@@ -3,15 +3,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'jquery/dist/jquery.min.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import EditCardNavBar from './EditCardNavBar';
-
-function EditCard({onClose, publicationId}) {
-  /**
+/**
    * Komponenta pro editaci karty publikace.
    *
-   * Parametry:
-   * - onClose (funkce): Funkce pro zavření komponenty.
-   * - publicationId (string): ID publikace.
+   * 
+   * @param {function} onClose - Funkce pro zavření komponenty.
+   * @param {string} publicationId - ID publikace.
+   * 
+   * @returns {JSX.Element} - The rendered component
    */
+function EditCard({onClose, publicationId}) {
+  
 
     const buttonRef = useRef(null); //Potřeba pro znovuzapnutí modalu z jiné komponenty
 

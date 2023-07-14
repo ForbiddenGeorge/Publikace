@@ -3,14 +3,15 @@ import { loadData } from 'features/PublicationSlice';
 import { useEffect, useState } from 'react';*/
 import React from "react";
 import EditCardNavBarAddAuthorSelect from './EditCardNavBarAddAuthorSelect';
-
-function EditCardNavBarAddAuthor(publicationId) {
-     /**
+  /**
    * Tělo jedné karty, která zobrazuje formulář pro přidání autora k publikaci.
    *
-   * Parametry:
-   * - publicationId (string): ID publikace.
+   * @param {string} publicationId - ID publikace.
+   * 
+   * @returns {JSX.Element} - The rendered component
    */
+function EditCardNavBarAddAuthor(publicationId) {
+   
     //Tělo jedné karty, volám samotný select
     return (
         <div className="container-fluid">
